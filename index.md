@@ -5,15 +5,6 @@ title: DieButzenscheibe (they/them)
 
 <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-4B81187ZV1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-4B81187ZV1');
-</script>
-
-
 <div class="page">
   <header>
     <h1>DieButzenscheibe <span>(they/them)</span></h1>
