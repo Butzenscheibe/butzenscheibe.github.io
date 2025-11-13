@@ -1,10 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
+/* ----- Standardfarben (Dark Mode) ----- */
 :root {
   --bg: #0e0e0f;
   --fg: #e8e8e8;
   --accent: #8ee1ff;
   --muted: #a0a0a0;
+}
+
+/* ----- Light Mode Override ----- */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f7f7f8;
+    --fg: #111;
+    --accent: #0077cc;
+    --muted: #555;
+  }
 }
 
 body {
@@ -17,6 +28,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .page {
