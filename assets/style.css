@@ -81,14 +81,18 @@ h1 span {
 #theme-toggle {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1rem;
   cursor: pointer;
-  color: var(--accent);
-  transition: transform 0.2s ease;
+  color: var(--muted);
+  transition: opacity 0.2s ease, color 0.2s ease;
+  opacity: 0.6;
+  padding: 0.25rem;
+  margin-left: 0.5rem;
 }
 
 #theme-toggle:hover {
-  transform: rotate(15deg) scale(1.1);
+  opacity: 1;
+  color: var(--fg);
 }
 
 .intro {
