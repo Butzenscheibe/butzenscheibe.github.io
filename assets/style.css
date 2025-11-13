@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-/* ----- Standardfarben (Dark Mode) ----- */
+/* ---- Farbdefinitionen (Dark Mode standard) ---- */
 :root {
   --bg: #0e0e0f;
   --fg: #e8e8e8;
@@ -8,7 +8,7 @@
   --muted: #a0a0a0;
 }
 
-/* ----- Light Mode Override ----- */
+/* ---- Light Mode ---- */
 @media (prefers-color-scheme: light) {
   :root {
     --bg: #f7f7f8;
@@ -18,6 +18,22 @@
   }
 }
 
+/* ---- Overrides, wenn manuell Light/Dark gewählt ---- */
+[data-theme="light"] {
+  --bg: #f7f7f8;
+  --fg: #111;
+  --accent: #0077cc;
+  --muted: #555;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0e0f;
+  --fg: #e8e8e8;
+  --accent: #8ee1ff;
+  --muted: #a0a0a0;
+}
+
+/* ---- Layout ---- */
 body {
   background-color: var(--bg);
   color: var(--fg);
@@ -37,6 +53,13 @@ body {
   text-align: center;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -48,6 +71,19 @@ h1 span {
   font-weight: 400;
   color: var(--muted);
   margin-left: .3rem;
+}
+
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--accent);
+  transition: transform 0.2s ease;
+}
+
+#theme-toggle:hover {
+  transform: rotate(15deg) scale(1.1);
 }
 
 .intro {
