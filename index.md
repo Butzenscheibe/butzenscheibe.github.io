@@ -8,6 +8,7 @@ title: DieButzenscheibe (they/them)
 <div class="page">
   <header>
     <h1>DieButzenscheibe <span>(they/them)</span></h1>
+    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
   </header>
 
   <main>
