@@ -1,3 +1,4 @@
-title: Die Butzenscheibe
-description: Meine erste GitHub Pages Website
-theme: jekyll-theme-cayman
+title: DieButzenscheibe
+description: They/Them
+theme: null   # kein Jekyll-Theme, wir stylen selbst
+markdown: kramdown
