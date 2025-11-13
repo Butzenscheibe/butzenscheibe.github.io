@@ -4,12 +4,10 @@ title: DieButzenscheibe (they/them)
 ---
 
 <link rel="stylesheet" href="assets/style.css">
-<script defer src="assets/theme.js"></script>
 
 <div class="page">
   <header>
     <h1>DieButzenscheibe <span>(they/them)</span></h1>
-    <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
   </header>
 
   <main>
