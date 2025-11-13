@@ -13,10 +13,7 @@ title: DieButzenscheibe (they/them)
 
   <main>
     <p class="intro">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-      Nullam fermentum turpis at justo facilisis, ut viverra nunc tincidunt. 
-      Integer vel turpis at lorem malesuada hendrerit. Duis feugiat ante sit amet quam cursus,
-      ut gravida lectus fermentum. Aenean eget augue nec felis suscipit congue.
+      soon 👀
     </p>
 
     <nav class="links">
