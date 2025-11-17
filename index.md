@@ -13,7 +13,7 @@ title: DieButzenscheibe (they/them)
 
   <main>
     <p class="intro">
-      soon 👀
+      diebutzenscheibe.dev will be together with eggiwu.ch a collection of projects (both school and private). These include gts, a unified IdP with SSO features called buAuth/buLogin and much more. If you have project ideas, don't hestiate to contact us via the link below.
     </p>
 
     <nav class="links">
