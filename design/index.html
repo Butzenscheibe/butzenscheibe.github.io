@@ -227,11 +227,165 @@
             font-size: 14px;
             font-weight: 600;
         }
+        .feedback-section {
+            background: linear-gradient(135deg, rgba(129, 161, 193, 0.08), rgba(129, 161, 193, 0.02));
+            border: 2px solid rgba(129, 161, 193, 0.4);
+            border-radius: 20px;
+            padding: 48px;
+            margin-top: 60px;
+            text-align: center;
+        }
+        .feedback-section h2 {
+            color: #81a1c1;
+            margin-bottom: 16px;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        .feedback-description {
+            color: #8b93b0;
+            margin-bottom: 36px;
+            font-size: 17px;
+        }
+        .feedback-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .form-group {
+            margin-bottom: 24px;
+        }
+        .form-group label {
+            display: block;
+            color: #d8dee9;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(129, 161, 193, 0.3);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #eceff4;
+            font-family: 'Inter', system-ui, sans-serif;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #81a1c1;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 4px rgba(129, 161, 193, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #81a1c1, #88c0d0);
+            border: none;
+            color: #fff;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(129, 161, 193, 0.4);
+        }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .feedback-status {
+            margin-top: 24px;
+            padding: 16px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 15px;
+            display: none;
+        }
+        .feedback-status.success {
+            background: rgba(163, 190, 140, 0.15);
+            border: 2px solid rgba(163, 190, 140, 0.4);
+            color: #a3be8c;
+            display: block;
+        }
+        .feedback-status.error {
+            background: rgba(191, 97, 106, 0.15);
+            border: 2px solid rgba(191, 97, 106, 0.4);
+            color: #bf616a;
+            display: block;
+        }
         @media (max-width: 768px) {
             .options-grid { grid-template-columns: 1fr; }
             h1 { font-size: 44px; }
+            .feedback-section { padding: 32px 24px; }
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('feedbackForm');
+            const statusDiv = document.getElementById('feedbackStatus');
+            
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const submitBtn = form.querySelector('.submit-btn');
+                const nameInput = document.getElementById('name');
+                const feedbackInput = document.getElementById('feedback');
+                
+                // Disable submit button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
+                statusDiv.className = 'feedback-status';
+                statusDiv.style.display = 'none';
+                
+                const formData = {
+                    name: nameInput.value.trim(),
+                    feedback: feedbackInput.value.trim(),
+                    subject: 'Design Feedback'
+                };
+                
+                try {
+                    const response = await fetch('https://feedback.diebutzenscheibe.dev/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    if (response.ok) {
+                        statusDiv.className = 'feedback-status success';
+                        statusDiv.textContent = '✓ Thank you! Your feedback has been submitted successfully.';
+                        form.reset();
+                    } else {
+                        throw new Error('Failed to submit feedback');
+                    }
+                } catch (error) {
+                    statusDiv.className = 'feedback-status error';
+                    statusDiv.textContent = '✗ Failed to submit feedback. Please try again later.';
+                    console.error('Feedback submission error:', error);
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Submit Feedback';
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="container">
@@ -414,6 +568,23 @@
                 <span class="component-tag">Stats</span>
                 <span class="component-tag">Dark/Light Mode</span>
             </div>
+        </div>
+
+        <div class="feedback-section">
+            <h2>💬 Share Your Feedback</h2>
+            <p class="feedback-description">Help us choose the best design for the ecosystem! Your feedback is valuable.</p>
+            <form id="feedbackForm" class="feedback-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="feedback">Feedback</label>
+                    <textarea id="feedback" name="feedback" rows="6" placeholder="Share your thoughts on the designs..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Feedback</button>
+            </form>
+            <div id="feedbackStatus" class="feedback-status"></div>
         </div>
 
         <div style="margin-top: 60px; text-align: center; color: #8b93b0;">
