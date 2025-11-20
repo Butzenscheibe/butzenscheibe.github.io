@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Option 2: Minimalist Flat</title>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+   <style>
+       /* Option 2: Minimalist Flat Design */
+       /* Clean, flat design with subtle shadows and maximum content focus */
+       
+       :root, [data-theme="dark"] {
+           --bg-primary: #0d1117;
+           --bg-secondary: #161b22;
+           --bg-tertiary: #21262d;
+           --accent-primary: #00d9b3;
+           --accent-secondary: #00a88f;
+           --text-primary: #f0f6fc;
+           --text-secondary: #8b949e;
+           --text-muted: #6e7681;
+           --border-color: #30363d;
+           --success-color: #3fb950;
+           --error-color: #f85149;
+           --warning-color: #d29922;
+           --info-color: #58a6ff;
+       }
+       
+       [data-theme="light"] {
+           --bg-primary: #ffffff;
+           --bg-secondary: #f6f8fa;
+           --bg-tertiary: #e7ecf0;
+           --accent-primary: #00b894;
+           --accent-secondary: #00a88f;
+           --text-primary: #1f2328;
+           --text-secondary: #57606a;
+           --text-muted: #6e7781;
+           --border-color: #d0d7de;
+           --success-color: #1a7f37;
+           --error-color: #d1242f;
+           --warning-color: #9a6700;
+           --info-color: #0969da;
+       }
+       
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+       
+       body {
+           font-family: 'Inter', system-ui, -apple-system, sans-serif;
+           background: var(--bg-primary);
+           color: var(--text-primary);
+           min-height: 100vh;
+           line-height: 1.6;
+           transition: background-color 0.2s, color 0.2s;
+       }
+       
+       .container {
+           max-width: 1100px;
+           margin: 0 auto;
+           padding: 48px 24px;
+       }
+       
+       /* Theme Toggle - Minimalist */
+       .theme-toggle {
+           position: fixed;
+           top: 20px;
+           right: 20px;
+           width: 44px;
+           height: 44px;
+           background: var(--bg-secondary);
+           border: 1px solid var(--border-color);
+           border-radius: 8px;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           cursor: pointer;
+           transition: all 0.2s;
+           z-index: 1000;
+       }
+       
+       .theme-toggle:hover {
+           background: var(--bg-tertiary);
+           border-color: var(--accent-primary);
+       }
+       
+       .theme-icon {
+           color: var(--text-primary);
+       }
+       
+       .theme-icon-light { display: none; }
+       [data-theme="light"] .theme-icon-dark { display: none; }
+       [data-theme="light"] .theme-icon-light { display: block; }
+       
+       /* Header - Simple and clean */
+       .header {
+           text-align: center;
+           margin-bottom: 48px;
+           padding-bottom: 24px;
+           border-bottom: 1px solid var(--border-color);
+       }
+       
+       .logo {
+           font-size: 48px;
+           font-weight: 700;
+           color: var(--accent-primary);
+           letter-spacing: -1px;
+           margin-bottom: 8px;
+       }
+       
+       .subtitle {
+           font-size: 16px;
+           color: var(--text-secondary);
+           font-weight: 400;
+       }
+       
+       /* Card - Flat with subtle border */
+       .card {
+           background: var(--bg-secondary);
+           border: 1px solid var(--border-color);
+           border-radius: 10px;
+           padding: 32px;
+           margin-bottom: 24px;
+           transition: border-color 0.2s;
+       }
+       
+       .card:hover {
+           border-color: var(--accent-primary);
+       }
+       
+       .card-header {
+           margin-bottom: 24px;
+           padding-bottom: 16px;
+           border-bottom: 1px solid var(--border-color);
+       }
+       
+       .card-title {
+           font-size: 22px;
+           font-weight: 600;
+           color: var(--text-primary);
+           margin-bottom: 6px;
+       }
+       
+       .card-description {
+           color: var(--text-secondary);
+           font-size: 14px;
+           line-height: 1.5;
+       }
+       
+       /* Form Elements - Clean and minimal */
+       .form-group {
+           margin-bottom: 20px;
+       }
+       
+       label {
+           display: block;
+           font-size: 14px;
+           font-weight: 500;
+           color: var(--text-primary);
+           margin-bottom: 8px;
+       }
+       
+       input, textarea {
+           width: 100%;
+           padding: 10px 14px;
+           background: var(--bg-primary);
+           border: 1px solid var(--border-color);
+           border-radius: 6px;
+           color: var(--text-primary);
+           font-size: 14px;
+           font-family: inherit;
+           transition: all 0.2s;
+           outline: none;
+       }
+       
+       input:focus, textarea:focus {
+           border-color: var(--accent-primary);
+           box-shadow: 0 0 0 3px rgba(0, 217, 179, 0.1);
+       }
+       
+       textarea {
+           resize: vertical;
+           min-height: 90px;
+       }
+       
+       /* Buttons - Flat with clear states */
+       .btn {
+           padding: 10px 24px;
+           border: none;
+           border-radius: 6px;
+           font-size: 14px;
+           font-weight: 500;
+           cursor: pointer;
+           transition: all 0.2s;
+           display: inline-block;
+           font-family: inherit;
+       }
+       
+       .btn-primary {
+           background: var(--accent-primary);
+           color: #ffffff;
+       }
+       
+       .btn-primary:hover {
+           background: var(--accent-secondary);
+       }
+       
+       .btn-secondary {
+           background: var(--bg-tertiary);
+           border: 1px solid var(--border-color);
+           color: var(--text-primary);
+       }
+       
+       .btn-secondary:hover {
+           background: var(--bg-primary);
+       }
+       
+       /* Alert - Simple bordered boxes */
+       .alert {
+           padding: 14px 16px;
+           border-radius: 6px;
+           margin-bottom: 20px;
+           display: flex;
+           align-items: center;
+           gap: 10px;
+           font-size: 14px;
+           border-left: 3px solid;
+       }
+       
+       .alert-success {
+           background: rgba(63, 185, 80, 0.1);
+           border-color: var(--success-color);
+           color: var(--success-color);
+       }
+       
+       [data-theme="light"] .alert-success {
+           background: rgba(26, 127, 55, 0.08);
+       }
+       
+       .alert-info {
+           background: rgba(88, 166, 255, 0.1);
+           border-color: var(--info-color);
+           color: var(--info-color);
+       }
+       
+       [data-theme="light"] .alert-info {
+           background: rgba(9, 105, 218, 0.08);
+       }
+       
+       /* Grid Layout */
+       .grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+           gap: 20px;
+           margin-top: 24px;
+       }
+       
+       /* Stats Cards - Minimal */
+       .stat-card {
+           background: var(--bg-secondary);
+           border: 1px solid var(--border-color);
+           border-radius: 8px;
+           padding: 20px;
+           transition: all 0.2s;
+       }
+       
+       .stat-card:hover {
+           border-color: var(--accent-primary);
+       }
+       
+       .stat-value {
+           font-size: 28px;
+           font-weight: 700;
+           color: var(--accent-primary);
+           margin-bottom: 6px;
+       }
+       
+       .stat-label {
+           color: var(--text-secondary);
+           font-size: 13px;
+           text-transform: uppercase;
+           letter-spacing: 0.5px;
+       }
+       
+       /* Badge */
+       .badge {
+           display: inline-block;
+           padding: 4px 10px;
+           border-radius: 12px;
+           font-size: 12px;
+           font-weight: 500;
+           background: var(--bg-tertiary);
+           color: var(--text-secondary);
+           border: 1px solid var(--border-color);
+       }
+       
+       .badge-success {
+           background: rgba(63, 185, 80, 0.15);
+           color: var(--success-color);
+           border-color: var(--success-color);
+       }
+       
+       /* List */
+       .feature-list {
+           list-style: none;
+           margin: 20px 0;
+       }
+       
+       .feature-list li {
+           padding: 10px 0;
+           border-bottom: 1px solid var(--border-color);
+           display: flex;
+           align-items: center;
+           gap: 12px;
+           color: var(--text-secondary);
+       }
+       
+       .feature-list li:last-child {
+           border-bottom: none;
+       }
+       
+       .feature-icon {
+           width: 20px;
+           height: 20px;
+           color: var(--accent-primary);
+       }
+       
+       /* Responsive */
+       @media (max-width: 768px) {
+           .container { padding: 32px 16px; }
+           .card { padding: 24px 20px; }
+           .logo { font-size: 40px; }
+           .grid { grid-template-columns: 1fr; }
+       }
+   </style>
+</head>
+<body>
+   <button class="theme-toggle" onclick="toggleTheme()">
+       <svg class="theme-icon theme-icon-dark" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+       </svg>
+       <svg class="theme-icon theme-icon-light" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+           <circle cx="12" cy="12" r="5"></circle>
+           <line x1="12" y1="1" x2="12" y2="3"></line>
+           <line x1="12" y1="21" x2="12" y2="23"></line>
+           <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+           <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+           <line x1="1" y1="12" x2="3" y2="12"></line>
+           <line x1="21" y1="12" x2="23" y2="12"></line>
+           <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+       </svg>
+   </button>
+
+   <div class="container">
+       <div class="header">
+           <div class="logo">buAuth</div>
+           <div class="subtitle">Minimalist Flat Design - Option 2</div>
+       </div>
+
+       <div class="card">
+           <div class="card-header">
+               <div class="card-title">✨ Clean & Minimal Interface</div>
+               <div class="card-description">
+                   A flat, content-focused design with subtle borders and no distractions. Perfect for users who prefer simplicity and efficiency.
+               </div>
+           </div>
+
+           <div class="alert alert-success">
+               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <polyline points="20 6 9 17 4 12"></polyline>
+               </svg>
+               <span>Authentication successful! Welcome back.</span>
+           </div>
+
+           <form>
+               <div class="form-group">
+                   <label>Email Address</label>
+                   <input type="email" placeholder="you@example.com" value="demo@butzenscheibe.dev">
+               </div>
+
+               <div class="form-group">
+                   <label>Password</label>
+                   <input type="password" placeholder="Enter your password" value="••••••••">
+               </div>
+
+               <div class="form-group">
+                   <label>Message</label>
+                   <textarea placeholder="Optional message">This minimalist design focuses on content with clean lines and clear hierarchy...</textarea>
+               </div>
+
+               <div style="display: flex; gap: 10px; margin-top: 24px;">
+                   <button type="button" class="btn btn-primary">Sign In</button>
+                   <button type="button" class="btn btn-secondary">Cancel</button>
+               </div>
+           </form>
+       </div>
+
+       <div class="card">
+           <div class="card-header">
+               <div class="card-title">Key Features</div>
+           </div>
+           
+           <ul class="feature-list">
+               <li>
+                   <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                       <polyline points="20 6 9 17 4 12"></polyline>
+                   </svg>
+                   <span>Minimal visual noise for better focus</span>
+               </li>
+               <li>
+                   <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                       <polyline points="20 6 9 17 4 12"></polyline>
+                   </svg>
+                   <span>Fast loading with simple styles</span>
+               </li>
+               <li>
+                   <svg class="feature-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                       <polyline points="20 6 9 17 4 12"></polyline>
+                   </svg>
+                   <span>Clear hierarchy and excellent readability</span>
+               </li>
+           </ul>
+       </div>
+
+       <div class="grid">
+           <div class="stat-card">
+               <div class="stat-value">2.4K</div>
+               <div class="stat-label">Active Users</div>
+           </div>
+           <div class="stat-card">
+               <div class="stat-value">99.9%</div>
+               <div class="stat-label">Uptime</div>
+           </div>
+           <div class="stat-card">
+               <div class="stat-value">< 50ms</div>
+               <div class="stat-label">Response Time</div>
+           </div>
+       </div>
+   </div>
+
+   <script>
+       function toggleTheme() {
+           const current = document.documentElement.getAttribute('data-theme') || 'dark';
+           const newTheme = current === 'dark' ? 'light' : 'dark';
+           document.documentElement.setAttribute('data-theme', newTheme);
+       }
+   </script>
+</body>
+</html>

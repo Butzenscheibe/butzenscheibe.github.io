@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 7: Professional Corporate</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Option 7: Professional Corporate Design */
+        /* Clean, professional, enterprise-ready for diebutzenscheibe.dev ecosystem */
+        
+        :root, [data-theme="dark"] {
+            --bg-primary: #1e1e1e;
+            --bg-secondary: #252526;
+            --bg-tertiary: #2d2d30;
+            --accent-primary: #0078d4;
+            --accent-secondary: #00bcf2;
+            --accent-success: #107c10;
+            --accent-warning: #ff8c00;
+            --accent-error: #e81123;
+            --text-primary: #ffffff;
+            --text-secondary: #cccccc;
+            --text-muted: #858585;
+            --border-color: #3e3e42;
+        }
+        
+        [data-theme="light"] {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f3f3;
+            --bg-tertiary: #e1e1e1;
+            --accent-primary: #0078d4;
+            --accent-secondary: #00a4ef;
+            --accent-success: #107c10;
+            --accent-warning: #ff8c00;
+            --accent-error: #d13438;
+            --text-primary: #1e1e1e;
+            --text-secondary: #3e3e42;
+            --text-muted: #616161;
+            --border-color: #d1d1d1;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .page-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Professional Top Bar */
+        .top-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            z-index: 100;
+        }
+        
+        .top-bar .logo {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-primary);
+            margin-right: 40px;
+        }
+        
+        .top-bar .ecosystem-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-left: 8px;
+        }
+        
+        .top-bar nav {
+            display: flex;
+            gap: 4px;
+            flex: 1;
+        }
+        
+        .top-bar-item {
+            padding: 8px 16px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        
+        .top-bar-item:hover, .top-bar-item.active {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 260px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border-color);
+            padding: 80px 16px 20px;
+        }
+        
+        .nav-section {
+            margin-bottom: 24px;
+        }
+        
+        .nav-section-title {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            padding: 0 12px;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 4px;
+            margin-bottom: 2px;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+        
+        .nav-item:hover {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        .nav-item.active {
+            background: var(--accent-primary);
+            color: white;
+        }
+        
+        .nav-icon {
+            margin-right: 10px;
+            width: 16px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 80px 40px 40px;
+            overflow-y: auto;
+        }
+        
+        .theme-toggle {
+            position: fixed;
+            top: 14px;
+            right: 24px;
+            width: 32px;
+            height: 32px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+        
+        .theme-toggle:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+        }
+        
+        .theme-toggle:hover .theme-icon {
+            color: white;
+        }
+        
+        .theme-icon { color: var(--text-secondary); }
+        .theme-icon-light { display: none; }
+        [data-theme="light"] .theme-icon-dark { display: none; }
+        [data-theme="light"] .theme-icon-light { display: block; }
+        
+        /* Corporate Card */
+        .corp-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+        
+        .card-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 16px;
+        }
+        
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.2s;
+            outline: none;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--accent-primary);
+            box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.2);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 8px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-block;
+            font-family: inherit;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+        }
+        
+        .btn:hover {
+            background: var(--bg-primary);
+        }
+        
+        .btn-primary {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #005a9e;
+            border-color: #005a9e;
+        }
+        
+        .btn-danger {
+            background: var(--accent-error);
+            border-color: var(--accent-error);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c11727;
+        }
+        
+        /* Alert */
+        .alert {
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            border-left: 4px solid;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .alert-success {
+            background: rgba(16, 124, 16, 0.1);
+            border-color: var(--accent-success);
+            color: var(--text-primary);
+        }
+        
+        .alert-info {
+            background: rgba(0, 120, 212, 0.1);
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+        
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+        
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--accent-primary);
+            margin-bottom: 4px;
+        }
+        
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+        
+        /* Table */
+        .table-container {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            text-align: left;
+            padding: 12px 16px;
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 13px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        td {
+            padding: 12px 16px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        /* Badge */
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .badge-success {
+            background: var(--accent-success);
+            color: white;
+        }
+        
+        .badge-warning {
+            background: var(--accent-warning);
+            color: white;
+        }
+        
+        .badge-error {
+            background: var(--accent-error);
+            color: white;
+        }
+        
+        /* Code Block */
+        .code-block {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 16px;
+            margin: 16px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: var(--text-secondary);
+            overflow-x: auto;
+        }
+        
+        @media (max-width: 980px) {
+            .page-layout { flex-direction: column; }
+            .sidebar { width: 100%; padding: 80px 16px 20px; }
+            .main-content { padding: 80px 20px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="logo">diebutzenscheibe.dev <span class="ecosystem-label">Ecosystem Platform</span></div>
+        <nav>
+            <a href="#" class="top-bar-item active">Home</a>
+            <a href="#" class="top-bar-item">Projects</a>
+            <a href="#" class="top-bar-item">Services</a>
+            <a href="#" class="top-bar-item">Documentation</a>
+        </nav>
+        <button class="theme-toggle" onclick="toggleTheme()">
+            <svg class="theme-icon theme-icon-dark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg class="theme-icon theme-icon-light" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+        </button>
+    </div>
+
+    <div class="page-layout">
+        <aside class="sidebar">
+            <div class="nav-section">
+                <div class="nav-section-title">Authentication</div>
+                <a href="#" class="nav-item active">
+                    <span class="nav-icon">📊</span> Dashboard
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🔐</span> Auth Gateway
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🔒</span> CORS Management
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Ecosystem</div>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🚀</span> All Projects
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📈</span> Analytics
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">⚙️</span> Configuration
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-section-title">Resources</div>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">📚</span> Documentation
+                </a>
+                <a href="#" class="nav-item">
+                    <span class="nav-icon">🔧</span> API Reference
+                </a>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <h1 style="font-size: 32px; margin-bottom: 8px;">Professional Corporate</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 32px;">Option 7 - Enterprise-ready design for the entire diebutzenscheibe.dev ecosystem</p>
+
+            <div class="alert alert-success">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>System configured successfully for ecosystem-wide deployment</span>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">4,521</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">99.99%</div>
+                    <div class="stat-label">Availability</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">42ms</div>
+                    <div class="stat-label">Avg Latency</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">18</div>
+                    <div class="stat-label">Active Services</div>
+                </div>
+            </div>
+
+            <div class="corp-card">
+                <h2 class="card-title">Account Configuration</h2>
+                <p class="card-description">
+                    Professional corporate design optimized for enterprise deployment across all diebutzenscheibe.dev projects.
+                </p>
+
+                <form>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" value="admin@butzenscheibe.dev">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select>
+                            <option>Engineering</option>
+                            <option>Operations</option>
+                            <option>Management</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notes</label>
+                        <textarea>Professional interface suitable for corporate environments...</textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 8px; margin-top: 20px;">
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="corp-card">
+                <h2 class="card-title">Service Status</h2>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Service Name</th>
+                                <th>Environment</th>
+                                <th>Status</th>
+                                <th>Uptime</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Authentication Gateway</td>
+                                <td>Production</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>99.98%</td>
+                            </tr>
+                            <tr>
+                                <td>CORS Management</td>
+                                <td>Production</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                                <td>99.97%</td>
+                            </tr>
+                            <tr>
+                                <td>Analytics Engine</td>
+                                <td>Production</td>
+                                <td><span class="badge badge-warning">Degraded</span></td>
+                                <td>98.45%</td>
+                            </tr>
+                            <tr>
+                                <td>Test Environment</td>
+                                <td>Staging</td>
+                                <td><span class="badge badge-error">Offline</span></td>
+                                <td>--</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="corp-card">
+                <h2 class="card-title">Integration Code</h2>
+                <div class="code-block">// Ecosystem-wide authentication integration
+&lt;script src="https://auth.butzenscheibe.dev/bulogin-button-1.js"&gt;&lt;/script&gt;
+
+&lt;bulogin-button-1 
+    auth-url="https://auth.butzenscheibe.dev"
+    redirect-url="https://your-service.butzenscheibe.dev"&gt;
+&lt;/bulogin-button-1&gt;</div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const current = document.documentElement.getAttribute('data-theme') || 'dark';
+            const newTheme = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', newTheme);
+        }
+    </script>
+</body>
+</html>
