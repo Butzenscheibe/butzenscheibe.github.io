@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 16: Warm Earth - diebutzenscheibe.dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root,[data-theme="light"]{--bg-primary:#f9f6f1;--bg-secondary:#fff8f0;--bg-tertiary:#f0ebe3;--earth-brown:#8b5a3c;--earth-terracotta:#d4745e;--earth-sage:#7a9b76;--earth-ochre:#d8a45e;--text-primary:#3e2f2f;--text-secondary:#6b5854;--text-muted:#998c86;--shadow:0 8px 32px rgba(139,90,60,.12)}
+        [data-theme="dark"]{--bg-primary:#2a2420;--bg-secondary:#352e28;--bg-tertiary:#3f3730;--earth-brown:#b8886f;--earth-terracotta:#e09478;--earth-sage:#98b894;--earth-ochre:#e8c488;--text-primary:#f5ede5;--text-secondary:#d4c4bb;--text-muted:#a89990;--shadow:0 8px 32px rgba(0,0,0,.4)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Source Sans 3',system-ui,sans-serif;background:var(--bg-primary);color:var(--text-primary);min-height:100vh;position:relative}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 25% 25%,rgba(139,90,60,.06),transparent 50%),radial-gradient(circle at 75% 75%,rgba(122,155,118,.06),transparent 50%);z-index:0}
+        .page-layout{display:flex;min-height:100vh;position:relative;z-index:1}
+        .sidebar{width:280px;background:var(--bg-secondary);border-right:3px solid var(--earth-brown);padding:40px 20px;box-shadow:var(--shadow)}
+        .logo{font-size:32px;font-weight:700;color:var(--earth-brown);margin-bottom:48px;text-align:center;font-family:'Spectral',serif;letter-spacing:-1px}
+        .nav-section{margin-bottom:32px}
+        .nav-section-title{font-size:11px;color:var(--earth-sage);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px;padding:0 12px;font-weight:700;font-family:'Spectral',serif}
+        .nav-item{display:block;padding:14px 18px;margin-bottom:8px;color:var(--text-secondary);text-decoration:none;border-radius:12px;transition:all .3s;font-size:15px;font-weight:500;border-left:4px solid transparent}
+        .nav-item:hover{background:rgba(139,90,60,.08);color:var(--text-primary);border-left-color:var(--earth-terracotta);transform:translateX(4px)}
+        .nav-item.active{background:rgba(139,90,60,.12);color:var(--earth-brown);font-weight:700;border-left-color:var(--earth-brown)}
+        .main-content{flex:1;padding:48px 56px;max-width:1400px}
+        .theme-toggle{position:fixed;top:28px;right:28px;width:60px;height:60px;background:var(--earth-terracotta);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .4s;z-index:1000;box-shadow:0 8px 24px rgba(212,116,94,.3)}
+        .theme-toggle:hover{transform:scale(1.1) rotate(20deg);box-shadow:0 12px 36px rgba(212,116,94,.5)}
+        .theme-icon{color:#fff}.theme-icon-light{display:none}
+        [data-theme="dark"] .theme-icon-dark{display:none}
+        [data-theme="dark"] .theme-icon-light{display:block}
+        .header{margin-bottom:44px}
+        .page-title{font-size:56px;font-weight:700;color:var(--earth-brown);margin-bottom:12px;font-family:'Spectral',serif;letter-spacing:-2px}
+        .subtitle{font-size:19px;color:var(--text-secondary);font-weight:400}
+        .earth-card{background:var(--bg-secondary);border-radius:16px;padding:40px;margin-bottom:28px;box-shadow:var(--shadow);transition:all .4s;border-top:4px solid var(--earth-ochre)}
+        .earth-card:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(139,90,60,.2)}
+        .card-title{font-size:32px;font-weight:700;color:var(--earth-brown);margin-bottom:14px;font-family:'Spectral',serif}
+        .card-description{color:var(--text-secondary);line-height:1.9;margin-bottom:28px;font-size:16px}
+        .form-group{margin-bottom:26px}
+        label{display:block;font-size:14px;font-weight:700;color:var(--earth-brown);margin-bottom:10px;font-family:'Spectral',serif}
+        input,textarea,select{width:100%;padding:16px 20px;background:var(--bg-tertiary);border:2px solid transparent;border-radius:10px;color:var(--text-primary);font-size:15px;font-family:inherit;transition:all .3s;outline:none}
+        input:focus,textarea:focus,select:focus{border-color:var(--earth-sage);background:var(--bg-secondary);box-shadow:0 0 0 4px rgba(122,155,118,.15)}
+        textarea{resize:vertical;min-height:110px}
+        .btn{padding:16px 36px;border:2px solid;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:all .3s;display:inline-block;font-family:inherit}
+        .btn-primary{background:var(--earth-brown);border-color:var(--earth-brown);color:#fff;box-shadow:0 6px 20px rgba(139,90,60,.3)}
+        .btn-primary:hover{background:transparent;color:var(--earth-brown);transform:translateY(-3px);box-shadow:0 10px 30px rgba(139,90,60,.4)}
+        .btn-secondary{background:transparent;border-color:var(--earth-sage);color:var(--earth-sage)}
+        .btn-secondary:hover{background:var(--earth-sage);color:#fff}
+        .btn-danger{background:var(--earth-terracotta);border-color:var(--earth-terracotta);color:#fff}
+        .btn-danger:hover{background:transparent;color:var(--earth-terracotta)}
+        .alert{padding:18px 24px;border-radius:12px;margin-bottom:28px;font-size:16px;font-weight:500;border-left:5px solid}
+        .alert-success{background:rgba(122,155,118,.15);border-color:var(--earth-sage);color:var(--text-primary)}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px;margin:40px 0}
+        .stat-card{background:var(--bg-secondary);border-radius:14px;padding:34px;text-align:center;transition:all .4s;box-shadow:var(--shadow);border-top:3px solid var(--earth-ochre)}
+        .stat-card:hover{transform:translateY(-8px);box-shadow:0 16px 48px rgba(139,90,60,.25)}
+        .stat-value{font-size:48px;font-weight:700;color:var(--earth-brown);margin-bottom:12px;font-family:'Spectral',serif}
+        .stat-label{font-size:13px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+        .table-container{background:var(--bg-secondary);border-radius:14px;overflow:hidden;margin:26px 0;box-shadow:var(--shadow)}
+        table{width:100%;border-collapse:collapse}
+        th{text-align:left;padding:18px 22px;background:rgba(139,90,60,.08);color:var(--earth-brown);font-weight:700;font-size:14px;font-family:'Spectral',serif}
+        td{padding:18px 22px;color:var(--text-secondary);border-bottom:1px solid rgba(139,90,60,.1)}
+        tr:last-child td{border-bottom:none}
+        tr:hover{background:rgba(139,90,60,.04)}
+        .badge{display:inline-block;padding:7px 16px;border-radius:8px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+        .badge-success{background:var(--earth-sage);color:#fff}
+        .badge-warning{background:var(--earth-ochre);color:#3e2f2f}
+        .badge-error{background:var(--earth-terracotta);color:#fff}
+        .code-block{background:var(--bg-tertiary);border-radius:12px;padding:24px;margin:26px 0;font-family:'Courier New',monospace;font-size:14px;color:var(--earth-sage);overflow-x:auto;border-left:4px solid var(--earth-brown)}
+        .list-item{background:var(--bg-secondary);border-radius:12px;padding:20px 24px;margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;box-shadow:var(--shadow);border-left:4px solid var(--earth-ochre)}
+        .list-item:hover{transform:translateX(8px);box-shadow:0 8px 24px rgba(139,90,60,.2)}
+        @media (max-width:980px){.page-layout{flex-direction:column}.sidebar{width:100%;padding:28px 20px}.main-content{padding:32px 20px}}
+    </style>
+</head>
+<body>
+    <div class="page-layout">
+        <aside class="sidebar">
+            <div class="logo">Butzenscheibe</div>
+            <div class="nav-section">
+                <div class="nav-section-title">Authentication</div>
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">Auth Gateway</a>
+                <a href="#" class="nav-item">CORS Management</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Ecosystem</div>
+                <a href="#" class="nav-item">All Projects</a>
+                <a href="#" class="nav-item">Analytics</a>
+                <a href="#" class="nav-item">Settings</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Resources</div>
+                <a href="#" class="nav-item">Documentation</a>
+                <a href="#" class="nav-item">API Reference</a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <svg class="theme-icon theme-icon-dark" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg class="theme-icon theme-icon-light" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+            <div class="header">
+                <h1 class="page-title">Warm Earth</h1>
+                <p class="subtitle">Option 16 - Natural earthy tones with organic warmth</p>
+            </div>
+            <div class="alert alert-success">🌿 Warm earth tones with natural, organic aesthetics</div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-value">3,654</div><div class="stat-label">Active Users</div></div>
+                <div class="stat-card"><div class="stat-value">99.7%</div><div class="stat-label">Uptime</div></div>
+                <div class="stat-card"><div class="stat-value">44ms</div><div class="stat-label">Response</div></div>
+                <div class="stat-card"><div class="stat-value">21</div><div class="stat-label">Sessions</div></div>
+            </div>
+            <div class="earth-card">
+                <h2 class="card-title">User Profile</h2>
+                <p class="card-description">Warm earthy tones inspired by nature - browns, terracottas, sage greens, and ochres. Organic, welcoming, and grounded with serif accents for elegance.</p>
+                <form>
+                    <div class="form-group"><label>Email Address</label><input type="email" value="earth@butzenscheibe.dev"></div>
+                    <div class="form-group"><label>Full Name</label><input type="text" value="Earth User"></div>
+                    <div class="form-group"><label>User Role</label><select><option>Administrator</option><option>Manager</option><option>User</option></select></div>
+                    <div class="form-group"><label>Biography</label><textarea>Natural earth aesthetics...</textarea></div>
+                    <div style="display:flex;gap:16px;margin-top:28px">
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <div class="earth-card">
+                <h2 class="card-title">Active Sessions</h2>
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>Device</th><th>Location</th><th>Last Active</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <tr><td>Chrome on macOS</td><td>Munich, Germany</td><td>2 min ago</td><td><span class="badge badge-success">Active</span></td></tr>
+                            <tr><td>Firefox on Linux</td><td>Berlin, Germany</td><td>1 hour ago</td><td><span class="badge badge-warning">Idle</span></td></tr>
+                            <tr><td>Safari on iOS</td><td>Hamburg, Germany</td><td>3 hours ago</td><td><span class="badge badge-error">Expired</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="earth-card">
+                <h2 class="card-title">Allowed Origins</h2>
+                <div class="list-item">
+                    <div><div style="font-weight:700;color:var(--earth-brown);font-family:Spectral,serif">https://auth.butzenscheibe.dev</div><div style="font-size:14px;color:var(--text-muted);margin-top:6px">Primary authentication</div></div>
+                    <button class="btn btn-danger" style="padding:10px 22px;font-size:14px">Remove</button>
+                </div>
+                <div class="list-item">
+                    <div><div style="font-weight:700;color:var(--earth-brown);font-family:Spectral,serif">https://mgmt-auth.butzenscheibe.dev</div><div style="font-size:14px;color:var(--text-muted);margin-top:6px">Management interface</div></div>
+                    <button class="btn btn-danger" style="padding:10px 22px;font-size:14px">Remove</button>
+                </div>
+            </div>
+            <div class="earth-card">
+                <h2 class="card-title">Integration Code</h2>
+                <div class="code-block">// Ecosystem authentication
+&lt;script src="https://auth.butzenscheibe.dev/bulogin-button-1.js"&gt;&lt;/script&gt;
+
+&lt;bulogin-button-1 
+    auth-url="https://auth.butzenscheibe.dev"
+    redirect-url="https://your-app.butzenscheibe.dev"&gt;
+&lt;/bulogin-button-1&gt;</div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function toggleTheme(){
+            const current=document.documentElement.getAttribute('data-theme')||'light';
+            const newTheme=current==='dark'?'light':'dark';
+            document.documentElement.setAttribute('data-theme',newTheme);
+        }
+    </script>
+</body>
+</html>

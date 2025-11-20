@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>diebutzenscheibe.dev - All Design Options</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>diebutzenscheibe.dev - All 9 Design Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -14,202 +14,252 @@
             padding: 60px 24px;
             line-height: 1.6;
         }
-        .container { max-width: 1400px; margin: 0 auto; }
+        .container { max-width: 1600px; margin: 0 auto; }
         h1 {
-            font-size: 56px;
+            font-size: 64px;
             text-align: center;
             margin-bottom: 16px;
-            background: linear-gradient(135deg, #5e8c8f, #88c0d0, #81a1c1);
+            background: linear-gradient(135deg, #5e8c8f, #88c0d0, #81a1c1, #b48ead);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
+            font-weight: 800;
+            letter-spacing: -2px;
         }
         .subtitle {
             text-align: center;
             color: #8b93b0;
             margin-bottom: 60px;
-            font-size: 20px;
+            font-size: 22px;
+            font-weight: 500;
         }
         .ecosystem-note {
             background: rgba(94, 140, 143, 0.1);
             border: 2px solid rgba(94, 140, 143, 0.3);
-            border-radius: 16px;
-            padding: 32px;
+            border-radius: 20px;
+            padding: 40px;
             margin-bottom: 48px;
             text-align: center;
         }
         .ecosystem-note h2 {
             color: #88c0d0;
-            margin-bottom: 12px;
-            font-size: 28px;
+            margin-bottom: 16px;
+            font-size: 32px;
+            font-weight: 700;
         }
         .complete-note {
             background: rgba(163, 190, 140, 0.12);
             border: 2px solid rgba(163, 190, 140, 0.4);
-            border-radius: 16px;
-            padding: 32px;
+            border-radius: 20px;
+            padding: 40px;
             margin-bottom: 48px;
             text-align: center;
         }
         .complete-note h2 {
             color: #a3be8c;
-            margin-bottom: 16px;
-            font-size: 32px;
+            margin-bottom: 20px;
+            font-size: 36px;
+            font-weight: 800;
+        }
+        .complete-note p {
+            color: #d8dee9;
+            font-size: 17px;
+            line-height: 1.8;
+            margin-top: 12px;
         }
         .options-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 28px;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 32px;
             margin-bottom: 60px;
         }
         .option-card {
             background: linear-gradient(135deg, rgba(163, 190, 140, 0.08), rgba(163, 190, 140, 0.02));
             border: 2px solid rgba(163, 190, 140, 0.5);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s;
+            border-radius: 20px;
+            padding: 36px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             cursor: pointer;
             position: relative;
         }
         .option-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 48px rgba(163, 190, 140, 0.3);
-            border-color: rgba(163, 190, 140, 0.7);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(163, 190, 140, 0.35);
+            border-color: rgba(163, 190, 140, 0.8);
+        }
+        .option-card.experimental {
+            background: linear-gradient(135deg, rgba(180, 142, 173, 0.08), rgba(180, 142, 173, 0.02));
+            border-color: rgba(180, 142, 173, 0.5);
+        }
+        .option-card.experimental:hover {
+            border-color: rgba(180, 142, 173, 0.8);
+            box-shadow: 0 20px 60px rgba(180, 142, 173, 0.35);
         }
         .complete-badge {
             position: absolute;
-            top: 16px;
-            right: 16px;
+            top: 20px;
+            right: 20px;
             background: #a3be8c;
             color: #2e3440;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-weight: 700;
+            padding: 7px 16px;
+            border-radius: 24px;
+            font-weight: 800;
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+        }
+        .experimental-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #b48ead;
+            color: #fff;
+            padding: 7px 16px;
+            border-radius: 24px;
+            font-weight: 800;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
         }
         .option-number {
             display: inline-block;
             background: linear-gradient(135deg, #a3be8c, #88c0d0);
             color: white;
-            padding: 8px 16px;
-            border-radius: 24px;
-            font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 16px;
+            padding: 10px 20px;
+            border-radius: 28px;
+            font-weight: 800;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .option-card.experimental .option-number {
+            background: linear-gradient(135deg, #b48ead, #d08770);
         }
         .option-title {
-            font-size: 28px;
-            font-weight: 700;
+            font-size: 32px;
+            font-weight: 800;
             color: #eceff4;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+            letter-spacing: -0.5px;
         }
         .option-description {
             color: #8b93b0;
-            margin-bottom: 20px;
-            line-height: 1.8;
-            font-size: 15px;
+            margin-bottom: 24px;
+            line-height: 1.9;
+            font-size: 16px;
         }
         .features {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 24px;
         }
         .feature-tag {
             background: rgba(163, 190, 140, 0.15);
-            border: 1px solid rgba(163, 190, 140, 0.3);
+            border: 1px solid rgba(163, 190, 140, 0.35);
             color: #a3be8c;
-            padding: 6px 14px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 500;
+            padding: 7px 16px;
+            border-radius: 18px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .option-card.experimental .feature-tag {
+            background: rgba(180, 142, 173, 0.15);
+            border-color: rgba(180, 142, 173, 0.35);
+            color: #b48ead;
         }
         .view-demo {
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
+            margin-top: 24px;
+            padding: 14px 28px;
             background: rgba(163, 190, 140, 0.2);
             border: 2px solid rgba(163, 190, 140, 0.5);
             color: #a3be8c;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
+            border-radius: 10px;
+            font-weight: 700;
             transition: all 0.3s;
-            font-size: 14px;
+            font-size: 15px;
         }
         .view-demo:hover {
-            background: rgba(163, 190, 140, 0.3);
+            background: rgba(163, 190, 140, 0.35);
             border-color: #a3be8c;
             transform: translateY(-2px);
+        }
+        .option-card.experimental .view-demo {
+            background: rgba(180, 142, 173, 0.2);
+            border-color: rgba(180, 142, 173, 0.5);
+            color: #b48ead;
+        }
+        .option-card.experimental .view-demo:hover {
+            background: rgba(180, 142, 173, 0.35);
+            border-color: #b48ead;
         }
         .components-showcase {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(94, 140, 143, 0.2);
-            border-radius: 16px;
-            padding: 36px;
+            border-radius: 20px;
+            padding: 44px;
             text-align: center;
         }
         .components-showcase h2 {
             color: #88c0d0;
-            margin-bottom: 20px;
-            font-size: 28px;
+            margin-bottom: 24px;
+            font-size: 32px;
+            font-weight: 700;
         }
         .components-showcase p {
             color: #8b93b0;
-            margin-bottom: 24px;
-            font-size: 16px;
+            margin-bottom: 28px;
+            font-size: 17px;
+            line-height: 1.7;
         }
         .component-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 14px;
             justify-content: center;
         }
         .component-tag {
             background: rgba(136, 192, 208, 0.15);
             border: 1px solid rgba(136, 192, 208, 0.3);
             color: #88c0d0;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 600;
         }
         @media (max-width: 768px) {
             .options-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 40px; }
+            h1 { font-size: 44px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>diebutzenscheibe.dev</h1>
-        <p class="subtitle">Complete Design System - All 5 Refined Options Ready</p>
+        <p class="subtitle">Complete Design System - All 9 Options Ready for Review</p>
         
         <div class="ecosystem-note">
             <h2>🌐 Ecosystem-Wide Design System</h2>
-            <p style="color: #d8dee9; font-size: 16px; line-height: 1.8;">
+            <p style="color: #d8dee9; font-size: 17px; line-height: 1.8; margin-top: 12px;">
                 These designs are built for the <strong>entire diebutzenscheibe.dev ecosystem</strong>, not just buAuth.<br>
                 Each includes comprehensive UI components for all projects across the platform.
             </p>
         </div>
 
         <div class="complete-note">
-            <h2>✅ All 5 Designs Complete!</h2>
-            <p style="color: #d8dee9; font-size: 16px; line-height: 1.8; margin-top: 12px;">
-                Based on your feedback, all refined designs are now ready for review.<br>
-                Each design has added depth to avoid being "too flat" and is available in both dark and light modes.
-            </p>
+            <h2>✅ All 9 Designs Complete!</h2>
+            <p><strong>First 5 Refined Designs</strong> based on initial feedback - each with added depth</p>
+            <p><strong>Plus 4 Experimental Designs</strong> exploring new directions while maintaining quality</p>
+            <p style="margin-top: 16px;">Each design has comprehensive UI components and supports both dark and light modes.</p>
         </div>
 
         <div class="options-grid">
             <div class="option-card" onclick="window.open('option8-nordic.html', '_blank')">
-                <span class="complete-badge">✓ COMPLETE</span>
+                <span class="complete-badge">✓ REFINED</span>
                 <span class="option-number">Option 8</span>
                 <h2 class="option-title">Nordic Minimal</h2>
                 <p class="option-description">
-                    Scandinavian-inspired design with light, airy spaces and muted colors. Calm, focused environment emphasizing simplicity and functionality. Explicitly requested!
+                    Scandinavian-inspired design with light, airy spaces and muted colors. Calm, focused environment emphasizing simplicity and functionality.
                 </p>
                 <div class="features">
                     <span class="feature-tag">Light & Airy</span>
@@ -221,11 +271,11 @@
             </div>
 
             <div class="option-card" onclick="window.open('option9-enhanced-glass.html', '_blank')">
-                <span class="complete-badge">✓ COMPLETE</span>
+                <span class="complete-badge">✓ REFINED</span>
                 <span class="option-number">Option 9</span>
                 <h2 class="option-title">Enhanced Glassmorphism</h2>
                 <p class="option-description">
-                    Improved practical execution of Option 1's great idea. Enhanced readability, better contrast, more usable while keeping the premium frosted glass aesthetic. Added depth throughout.
+                    Improved practical execution with enhanced readability and better contrast. Premium frosted glass aesthetic with better usability.
                 </p>
                 <div class="features">
                     <span class="feature-tag">Improved Usability</span>
@@ -237,11 +287,11 @@
             </div>
 
             <div class="option-card" onclick="window.open('option10-balanced-gradients.html', '_blank')">
-                <span class="complete-badge">✓ COMPLETE</span>
+                <span class="complete-badge">✓ REFINED</span>
                 <span class="option-number">Option 10</span>
                 <h2 class="option-title">Balanced Gradients</h2>
                 <p class="option-description">
-                    Beautiful gradients from Option 3 with completely redesigned light mode. Fixed the "ugly light mode" while keeping the stunning gradient aesthetics you loved. Depth added via shadows.
+                    Beautiful gradients with completely redesigned light mode. Fixed the "ugly light mode" while keeping stunning gradient aesthetics.
                 </p>
                 <div class="features">
                     <span class="feature-tag">Beautiful Gradients</span>
@@ -253,11 +303,11 @@
             </div>
 
             <div class="option-card" onclick="window.open('option11-elevated-minimal.html', '_blank')">
-                <span class="complete-badge">✓ COMPLETE</span>
+                <span class="complete-badge">✓ REFINED</span>
                 <span class="option-number">Option 11</span>
                 <h2 class="option-title">Elevated Minimal</h2>
                 <p class="option-description">
-                    Option 2's minimalism with added depth and substance. No longer "too flat" - subtle shadows, layers, and elevations create visual interest while staying clean and focused.
+                    Minimalism with added depth and substance. No longer "too flat" - subtle shadows, layers, and elevations create visual interest.
                 </p>
                 <div class="features">
                     <span class="feature-tag">Not Too Flat</span>
@@ -269,11 +319,11 @@
             </div>
 
             <div class="option-card" onclick="window.open('option12-modern-professional.html', '_blank')">
-                <span class="complete-badge">✓ COMPLETE</span>
+                <span class="complete-badge">✓ REFINED</span>
                 <span class="option-number">Option 12</span>
                 <h2 class="option-title">Modern Professional</h2>
                 <p class="option-description">
-                    Option 7 reimagined with modern touches and more attention to detail. No longer "old" or "unloved" - fresh, polished, and professional with contemporary aesthetics and depth.
+                    Reimagined with modern touches and attention to detail. No longer "old" or "unloved" - fresh, polished, and professional.
                 </p>
                 <div class="features">
                     <span class="feature-tag">Modern</span>
@@ -283,11 +333,75 @@
                 </div>
                 <a href="option12-modern-professional.html" class="view-demo" onclick="event.stopPropagation()">View Full Demo →</a>
             </div>
+
+            <div class="option-card experimental" onclick="window.open('option13-neon-dark.html', '_blank')">
+                <span class="experimental-badge">⚡ EXPERIMENTAL</span>
+                <span class="option-number">Option 13</span>
+                <h2 class="option-title">Neon Dark</h2>
+                <p class="option-description">
+                    Bold cyberpunk-inspired design with neon glows, sharp edges, and futuristic aesthetics. Edgy, experimental, and eye-catching.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">Neon Glow</span>
+                    <span class="feature-tag">Cyberpunk</span>
+                    <span class="feature-tag">Bold</span>
+                    <span class="feature-tag">Futuristic</span>
+                </div>
+                <a href="option13-neon-dark.html" class="view-demo" onclick="event.stopPropagation()">View Full Demo →</a>
+            </div>
+
+            <div class="option-card experimental" onclick="window.open('option14-soft-pastel.html', '_blank')">
+                <span class="experimental-badge">⚡ EXPERIMENTAL</span>
+                <span class="option-number">Option 14</span>
+                <h2 class="option-title">Soft Pastel</h2>
+                <p class="option-description">
+                    Gentle pastel palette with playful aesthetics. Soft pinks, blues, purples creating a calm, welcoming atmosphere with smooth transitions.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">Soft Colors</span>
+                    <span class="feature-tag">Playful</span>
+                    <span class="feature-tag">Calming</span>
+                    <span class="feature-tag">Welcoming</span>
+                </div>
+                <a href="option14-soft-pastel.html" class="view-demo" onclick="event.stopPropagation()">View Full Demo →</a>
+            </div>
+
+            <div class="option-card experimental" onclick="window.open('option15-material-deep.html', '_blank')">
+                <span class="experimental-badge">⚡ EXPERIMENTAL</span>
+                <span class="option-number">Option 15</span>
+                <h2 class="option-title">Material Deep</h2>
+                <p class="option-description">
+                    Material Design 3 inspired with proper elevation system and motion principles. Google's latest design language - clean and accessible.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">Material 3</span>
+                    <span class="feature-tag">Elevation</span>
+                    <span class="feature-tag">Motion</span>
+                    <span class="feature-tag">Accessible</span>
+                </div>
+                <a href="option15-material-deep.html" class="view-demo" onclick="event.stopPropagation()">View Full Demo →</a>
+            </div>
+
+            <div class="option-card experimental" onclick="window.open('option16-warm-earth.html', '_blank')">
+                <span class="experimental-badge">⚡ EXPERIMENTAL</span>
+                <span class="option-number">Option 16</span>
+                <h2 class="option-title">Warm Earth</h2>
+                <p class="option-description">
+                    Natural earthy tones - browns, terracottas, sage greens, ochres. Organic, welcoming, and grounded with serif accents for elegance.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">Natural</span>
+                    <span class="feature-tag">Warm Tones</span>
+                    <span class="feature-tag">Organic</span>
+                    <span class="feature-tag">Elegant</span>
+                </div>
+                <a href="option16-warm-earth.html" class="view-demo" onclick="event.stopPropagation()">View Full Demo →</a>
+            </div>
         </div>
 
         <div class="components-showcase">
             <h2>📦 Complete Component Library</h2>
-            <p>Every design includes all essential UI components with depth and shadow layers:</p>
+            <p>Every design includes all essential UI components with depth and modern interactions:</p>
             <div class="component-tags">
                 <span class="component-tag">Navigation</span>
                 <span class="component-tag">Forms</span>
@@ -303,9 +417,9 @@
         </div>
 
         <div style="margin-top: 60px; text-align: center; color: #8b93b0;">
-            <p style="font-size: 14px;">All 5 refined designs (Options 8-12) are complete and ready for review.</p>
-            <p style="font-size: 14px; margin-top: 12px;">Each design has been enhanced with depth to avoid being "too flat".</p>
-            <p style="font-size: 14px; margin-top: 12px;">All designs are ecosystem-wide and support both dark and light modes.</p>
+            <p style="font-size: 15px; font-weight: 500;">All 9 designs (Options 8-16) are complete and ready for review.</p>
+            <p style="font-size: 15px; margin-top: 14px;">5 refined designs based on feedback + 4 experimental explorations</p>
+            <p style="font-size: 15px; margin-top: 14px;">All designs are ecosystem-wide and support both dark and light modes.</p>
         </div>
     </div>
 </body>
