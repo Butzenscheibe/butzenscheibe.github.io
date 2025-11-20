@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option 15: Material Deep - diebutzenscheibe.dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root,[data-theme="dark"]{--bg-primary:#121212;--bg-surface:#1e1e1e;--bg-elevated:#2c2c2c;--primary:#bb86fc;--primary-variant:#3700b3;--secondary:#03dac6;--secondary-variant:#018786;--text-high:#ffffff;--text-medium:rgba(255,255,255,.87);--text-low:rgba(255,255,255,.60);--error:#cf6679}
+        [data-theme="light"]{--bg-primary:#fafafa;--bg-surface:#ffffff;--bg-elevated:#f5f5f5;--primary:#6200ee;--primary-variant:#3700b3;--secondary:#03dac6;--secondary-variant:#018786;--text-high:#000000;--text-medium:rgba(0,0,0,.87);--text-low:rgba(0,0,0,.60);--error:#b00020}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Roboto',system-ui,sans-serif;background:var(--bg-primary);color:var(--text-medium);min-height:100vh}
+        .page-layout{display:flex;min-height:100vh}
+        .sidebar{width:280px;background:var(--bg-surface);padding:40px 20px;box-shadow:0 8px 24px rgba(0,0,0,.15);z-index:10}
+        .logo{font-size:24px;font-weight:700;color:var(--primary);margin-bottom:48px;text-align:center;letter-spacing:1px}
+        .nav-section{margin-bottom:32px}
+        .nav-section-title{font-size:11px;color:var(--text-low);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;padding:0 12px;font-weight:700}
+        .nav-item{display:block;padding:12px 16px;margin-bottom:4px;color:var(--text-low);text-decoration:none;border-radius:4px;transition:all .2s;font-size:14px;font-weight:500;position:relative;overflow:hidden}
+        .nav-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--primary);transform:scaleY(0);transition:transform .2s}
+        .nav-item:hover{background:rgba(187,134,252,.08);color:var(--text-medium)}
+        .nav-item:hover::before{transform:scaleY(1)}
+        .nav-item.active{background:rgba(187,134,252,.12);color:var(--primary);font-weight:700}
+        .nav-item.active::before{transform:scaleY(1)}
+        .main-content{flex:1;padding:48px 56px;max-width:1400px}
+        .theme-toggle{position:fixed;top:28px;right:28px;width:56px;height:56px;background:var(--bg-elevated);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;z-index:1000;box-shadow:0 4px 12px rgba(0,0,0,.15)}
+        .theme-toggle:hover{background:var(--primary);transform:scale(1.1);box-shadow:0 8px 24px rgba(187,134,252,.4)}
+        .theme-toggle:hover .theme-icon{color:#fff}
+        .theme-icon{color:var(--text-medium)}.theme-icon-light{display:none}
+        [data-theme="light"] .theme-icon-dark{display:none}
+        [data-theme="light"] .theme-icon-light{display:block}
+        .header{margin-bottom:44px}
+        .page-title{font-size:48px;font-weight:900;color:var(--text-high);margin-bottom:12px;letter-spacing:-1px}
+        .subtitle{font-size:18px;color:var(--text-low);font-weight:400}
+        .material-card{background:var(--bg-surface);border-radius:4px;padding:32px;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .3s}
+        .material-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.15);transform:translateY(-2px)}
+        .card-title{font-size:24px;font-weight:700;color:var(--text-high);margin-bottom:16px}
+        .card-description{color:var(--text-low);line-height:1.7;margin-bottom:24px}
+        .form-group{margin-bottom:20px}
+        label{display:block;font-size:12px;font-weight:500;color:var(--text-low);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+        input,textarea{width:100%;padding:12px 16px;background:transparent;border:none;border-bottom:2px solid var(--text-low);border-radius:4px 4px 0 0;color:var(--text-medium);font-size:16px;font-family:inherit;transition:all .2s;outline:none;background:rgba(187,134,252,.04)}
+        select{width:100%;padding:12px 16px;background:var(--bg-tertiary);border:2px solid transparent;border-radius:8px;color:var(--text-primary);font-size:14px;font-family:inherit;transition:all .3s;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%236b7280' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:45px}
+        select:hover{border-color:var(--accent-light);background-color:var(--bg-secondary)}
+        select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
+        input:focus,textarea:focus:focus,textarea:focus{border-bottom-color:var(--primary);background:rgba(187,134,252,.08)}
+        textarea{resize:vertical;min-height:100px;border:2px solid var(--text-low);border-radius:4px}
+        textarea:focus{border-color:var(--primary)}
+        .btn{padding:10px 24px;border:none;border-radius:4px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;display:inline-block;font-family:inherit;text-transform:uppercase;letter-spacing:1px;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+        .btn:hover{box-shadow:0 4px 12px rgba(0,0,0,.15);transform:translateY(-1px)}
+        .btn-primary{background:var(--primary);color:#fff}
+        .btn-primary:hover{background:var(--primary-variant)}
+        .btn-secondary{background:transparent;border:2px solid var(--primary);color:var(--primary)}
+        .btn-secondary:hover{background:rgba(187,134,252,.08)}
+        .btn-danger{background:var(--error);color:#fff}
+        .btn-danger:hover{box-shadow:0 4px 12px rgba(207,102,121,.4)}
+        .alert{padding:16px 20px;border-radius:4px;margin-bottom:24px;font-size:14px;font-weight:500;border-left:4px solid}
+        .alert-success{background:rgba(3,218,198,.12);border-color:var(--secondary);color:var(--text-medium)}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin:36px 0}
+        .stat-card{background:var(--bg-surface);border-radius:4px;padding:28px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.1);transition:all .3s}
+        .stat-card:hover{box-shadow:0 8px 24px rgba(0,0,0,.15);transform:translateY(-4px)}
+        .stat-value{font-size:36px;font-weight:900;color:var(--primary);margin-bottom:8px}
+        .stat-label{font-size:12px;color:var(--text-low);text-transform:uppercase;letter-spacing:1px;font-weight:500}
+        .table-container{background:var(--bg-surface);border-radius:4px;overflow:hidden;margin:24px 0;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+        table{width:100%;border-collapse:collapse}
+        th{text-align:left;padding:16px 20px;background:rgba(187,134,252,.08);color:var(--text-high);font-weight:700;font-size:12px;text-transform:uppercase;letter-spacing:1px}
+        td{padding:16px 20px;color:var(--text-medium);border-bottom:1px solid rgba(187,134,252,.1)}
+        tr:last-child td{border-bottom:none}
+        tr:hover{background:rgba(187,134,252,.04)}
+        .badge{display:inline-block;padding:4px 12px;border-radius:12px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+        .badge-success{background:var(--secondary);color:#000}
+        .badge-warning{background:#ff9800;color:#000}
+        .badge-error{background:var(--error);color:#fff}
+        .code-block{background:var(--bg-elevated);border-radius:4px;padding:20px;margin:24px 0;font-family:'Courier New',monospace;font-size:13px;color:var(--secondary);overflow-x:auto;box-shadow:inset 0 2px 4px rgba(0,0,0,.1)}
+        .list-item{background:var(--bg-surface);border-radius:4px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;transition:all .2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+        .list-item:hover{box-shadow:0 4px 12px rgba(0,0,0,.15);transform:translateX(4px)}
+        @media (max-width:980px){.page-layout{flex-direction:column}.sidebar{width:100%;padding:28px 20px}.main-content{padding:32px 20px}}
+    </style>
+</head>
+<body>
+    <div class="page-layout">
+        <aside class="sidebar">
+            <div class="logo">diebutzenscheibe</div>
+            <div class="nav-section">
+                <div class="nav-section-title">Authentication</div>
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">Auth Gateway</a>
+                <a href="#" class="nav-item">CORS Management</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Ecosystem</div>
+                <a href="#" class="nav-item">All Projects</a>
+                <a href="#" class="nav-item">Analytics</a>
+                <a href="#" class="nav-item">Settings</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Resources</div>
+                <a href="#" class="nav-item">Documentation</a>
+                <a href="#" class="nav-item">API Reference</a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <svg class="theme-icon theme-icon-dark" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg class="theme-icon theme-icon-light" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+            <div class="header">
+                <h1 class="page-title">Material Deep</h1>
+                <p class="subtitle">Option 15 - Material Design 3 inspired depth</p>
+            </div>
+            <div class="alert alert-success">✓ Material Design principles with elevation and motion</div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-value">5,214</div><div class="stat-label">Active Users</div></div>
+                <div class="stat-card"><div class="stat-value">99.95%</div><div class="stat-label">Uptime</div></div>
+                <div class="stat-card"><div class="stat-value">32ms</div><div class="stat-label">Response</div></div>
+                <div class="stat-card"><div class="stat-value">28</div><div class="stat-label">Sessions</div></div>
+            </div>
+            <div class="material-card">
+                <h2 class="card-title">User Profile</h2>
+                <p class="card-description">Material Design 3 inspired with proper elevation system, motion principles, and Google's latest design language. Clean, accessible, and modern.</p>
+                <form>
+                    <div class="form-group"><label>Email Address</label><input type="email" value="material@butzenscheibe.dev"></div>
+                    <div class="form-group"><label>Full Name</label><input type="text" value="Material User"></div>
+                    <div class="form-group"><label>User Role</label><select><option>Administrator</option><option>Developer</option><option>User</option></select></div>
+                    <div class="form-group"><label>Biography</label><textarea>Material Design aesthetics...</textarea></div>
+                    <div style="display:flex;gap:12px;margin-top:24px">
+                        <button type="button" class="btn btn-primary">Save Changes</button>
+                        <button type="button" class="btn btn-secondary">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <div class="material-card">
+                <h2 class="card-title">Active Sessions</h2>
+                <div class="table-container">
+                    <table>
+                        <thead><tr><th>Device</th><th>Location</th><th>Last Active</th><th>Status</th></tr></thead>
+                        <tbody>
+                            <tr><td>Chrome on macOS</td><td>Munich, Germany</td><td>2 min ago</td><td><span class="badge badge-success">Active</span></td></tr>
+                            <tr><td>Firefox on Linux</td><td>Berlin, Germany</td><td>1 hour ago</td><td><span class="badge badge-warning">Idle</span></td></tr>
+                            <tr><td>Safari on iOS</td><td>Hamburg, Germany</td><td>3 hours ago</td><td><span class="badge badge-error">Expired</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="material-card">
+                <h2 class="card-title">Allowed Origins</h2>
+                <div class="list-item">
+                    <div><div style="font-weight:700;color:var(--text-high)">https://auth.butzenscheibe.dev</div><div style="font-size:13px;color:var(--text-low);margin-top:4px">Primary authentication</div></div>
+                    <button class="btn btn-danger" style="padding:8px 16px;font-size:12px">Remove</button>
+                </div>
+                <div class="list-item">
+                    <div><div style="font-weight:700;color:var(--text-high)">https://mgmt-auth.butzenscheibe.dev</div><div style="font-size:13px;color:var(--text-low);margin-top:4px">Management interface</div></div>
+                    <button class="btn btn-danger" style="padding:8px 16px;font-size:12px">Remove</button>
+                </div>
+            </div>
+            <div class="material-card">
+                <h2 class="card-title">Integration Code</h2>
+                <div class="code-block">// Ecosystem authentication
+&lt;script src="https://auth.butzenscheibe.dev/bulogin-button-1.js"&gt;&lt;/script&gt;
+
+&lt;bulogin-button-1 
+    auth-url="https://auth.butzenscheibe.dev"
+    redirect-url="https://your-app.butzenscheibe.dev"&gt;
+&lt;/bulogin-button-1&gt;</div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function toggleTheme(){
+            const current=document.documentElement.getAttribute('data-theme')||'dark';
+            const newTheme=current==='dark'?'light':'dark';
+            document.documentElement.setAttribute('data-theme',newTheme);
+        }
+    </script>
+</body>
+</html>

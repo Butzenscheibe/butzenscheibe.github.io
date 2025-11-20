@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design 1: Soft Pastel - diebutzenscheibe.dev</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root,[data-theme="light"]{--bg-primary:#fef9f5;--bg-secondary:#fff;--bg-tertiary:#f9f4f0;--pastel-pink:#ffb3c6;--pastel-blue:#a8d8ea;--pastel-purple:#c5b4e3;--pastel-green:#b8e6d5;--text-primary:#4a3f3f;--text-secondary:#7d6e6e;--text-muted:#a89f9f;--shadow:0 8px 32px rgba(0,0,0,.06)}
+        [data-theme="dark"]{--bg-primary:#2a2632;--bg-secondary:#352f3f;--bg-tertiary:#3f3849;--pastel-pink:#d8859c;--pastel-blue:#7fa8ba;--pastel-purple:#9d8cb3;--pastel-green:#88b6a5;--text-primary:#f0e8e8;--text-secondary:#c5b5b5;--text-muted:#9f8f8f;--shadow:0 8px 32px rgba(0,0,0,.3)}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Poppins',system-ui,sans-serif;background:var(--bg-primary);color:var(--text-primary);min-height:100vh;position:relative}
+        body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 30% 30%,rgba(255,179,198,.08),transparent 50%),radial-gradient(circle at 70% 70%,rgba(168,216,234,.08),transparent 50%);z-index:0}
+        .page-layout{display:flex;min-height:100vh;position:relative;z-index:1}
+        .sidebar{width:280px;background:var(--bg-secondary);border-right:3px solid;border-image:linear-gradient(180deg,var(--pastel-pink),var(--pastel-blue),var(--pastel-purple)) 1;padding:40px 20px;box-shadow:var(--shadow)}
+        .logo{font-size:26px;font-weight:600;background:linear-gradient(135deg,var(--pastel-pink),var(--pastel-blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:48px;text-align:center;letter-spacing:-0.5px}
+        .nav-section{margin-bottom:32px}
+        .nav-section-title{font-size:11px;color:var(--pastel-purple);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;padding:0 12px;font-weight:600}
+        .nav-item{display:block;padding:12px 16px;margin-bottom:8px;color:var(--text-secondary);text-decoration:none;border-radius:20px;transition:all .3s;font-size:14px;font-weight:500}
+        .nav-item:hover{background:linear-gradient(135deg,rgba(255,179,198,.15),rgba(168,216,234,.15));color:var(--text-primary);transform:translateX(4px)}
+        .nav-item.active{background:linear-gradient(135deg,var(--pastel-pink),var(--pastel-blue));color:#fff;font-weight:600;box-shadow:0 4px 16px rgba(255,179,198,.4)}
+        .main-content{flex:1;padding:48px 56px;max-width:1400px}
+        .theme-toggle{position:fixed;top:28px;right:28px;width:56px;height:56px;background:linear-gradient(135deg,var(--pastel-pink),var(--pastel-purple));border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .4s;z-index:1000;box-shadow:0 8px 24px rgba(255,179,198,.4)}
+        .theme-toggle:hover{transform:scale(1.15) rotate(15deg);box-shadow:0 12px 36px rgba(255,179,198,.6)}
+        .theme-icon{color:#fff}.theme-icon-light{display:none}
+        [data-theme="dark"] .theme-icon-dark{display:none}
+        [data-theme="dark"] .theme-icon-light{display:block}
+        .header{margin-bottom:44px}
+        .page-title{font-size:48px;font-weight:700;background:linear-gradient(135deg,var(--pastel-pink),var(--pastel-blue),var(--pastel-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px;letter-spacing:-1px}
+        .subtitle{font-size:18px;color:var(--text-secondary);font-weight:400}
+        .pastel-card{background:var(--bg-secondary);border-radius:24px;padding:36px;margin-bottom:28px;box-shadow:var(--shadow);transition:all .4s;position:relative;overflow:hidden}
+        .pastel-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--pastel-pink),var(--pastel-blue),var(--pastel-purple),var(--pastel-green))}
+        .pastel-card:hover{transform:translateY(-8px);box-shadow:0 16px 48px rgba(168,216,234,.3)}
+        .card-title{font-size:28px;font-weight:600;background:linear-gradient(135deg,var(--pastel-blue),var(--pastel-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+        .card-description{color:var(--text-secondary);line-height:1.8;margin-bottom:28px}
+        .form-group{margin-bottom:24px}
+        label{display:block;font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:8px}
+        input,textarea{width:100%;padding:14px 18px;background:var(--bg-tertiary);border:2px solid transparent;border-radius:16px;color:var(--text-primary);font-size:14px;font-family:inherit;transition:all .3s;outline:none}
+        input:focus,textarea:focus{border-color:var(--pastel-blue);background:var(--bg-secondary);box-shadow:0 0 0 4px rgba(168,216,234,.2)}
+        textarea{resize:vertical;min-height:100px}
+        select{width:100%;padding:14px 18px 14px 18px;background:var(--bg-tertiary);border:2px solid transparent;border-radius:16px;color:var(--text-primary);font-size:14px;font-family:inherit;transition:all .3s;outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23a8d8ea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center;padding-right:48px}
+        select:hover{border-color:rgba(168,216,234,.3);background-color:var(--bg-secondary)}
+        select:focus{border-color:var(--pastel-blue);background:var(--bg-secondary);box-shadow:0 0 0 4px rgba(168,216,234,.2);background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23a8d8ea' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+        [data-theme="dark"] select{background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%237fa8ba' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+        [data-theme="dark"] select:focus{background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%237fa8ba' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+        .btn{padding:14px 32px;border:none;border-radius:24px;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s;display:inline-block;font-family:inherit}
+        .btn-primary{background:linear-gradient(135deg,var(--pastel-pink),var(--pastel-blue));color:#fff;box-shadow:0 6px 20px rgba(168,216,234,.4)}
+        .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(168,216,234,.6)}
+        .btn-secondary{background:var(--bg-tertiary);color:var(--text-primary);border:2px solid var(--pastel-purple)}
+        .btn-secondary:hover{background:var(--pastel-purple);color:#fff}
+        .btn-danger{background:linear-gradient(135deg,#ff9aa2,#ffc5c5);color:#fff}
+        .btn-danger:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,154,162,.4)}
+        .alert{padding:18px 22px;border-radius:20px;margin-bottom:28px;font-size:15px;font-weight:500;border:2px solid}
+        .alert-success{background:rgba(184,230,213,.15);border-color:var(--pastel-green);color:var(--text-primary)}
+        .alert-info{background:rgba(168,216,234,.15);border-color:var(--pastel-blue);color:var(--text-primary)}
+        .alert-warning{background:rgba(255,216,155,.15);border-color:#ffd89b;color:var(--text-primary)}
+        .alert-error{background:rgba(255,154,162,.15);border-color:#ff9aa2;color:var(--text-primary)}
+        .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:24px;margin:36px 0}
+        .stat-card{background:var(--bg-secondary);border-radius:20px;padding:32px;text-align:center;transition:all .4s;box-shadow:var(--shadow);position:relative;overflow:hidden}
+        .stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--pastel-pink),var(--pastel-blue))}
+        .stat-card:hover{transform:translateY(-8px) scale(1.03);box-shadow:0 16px 48px rgba(197,180,227,.3)}
+        .stat-value{font-size:42px;font-weight:700;background:linear-gradient(135deg,var(--pastel-blue),var(--pastel-purple));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+        .stat-label{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+        .table-container{background:var(--bg-secondary);border-radius:20px;overflow:hidden;margin:24px 0;box-shadow:var(--shadow)}
+        table{width:100%;border-collapse:collapse}
+        th{text-align:left;padding:16px 20px;background:linear-gradient(135deg,rgba(255,179,198,.1),rgba(168,216,234,.1));color:var(--text-primary);font-weight:600;font-size:13px}
+        td{padding:16px 20px;color:var(--text-secondary);border-bottom:1px solid rgba(168,216,234,.1)}
+        tr:last-child td{border-bottom:none}
+        tr:hover{background:rgba(197,180,227,.05)}
+        .badge{display:inline-block;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:600;text-transform:uppercase}
+        .badge-success{background:var(--pastel-green);color:#fff}
+        .badge-warning{background:#ffd89b;color:#8b7355}
+        .badge-error{background:#ff9aa2;color:#fff}
+        .code-block{background:var(--bg-tertiary);border-radius:16px;padding:22px;margin:24px 0;font-family:'Courier New',monospace;font-size:13px;color:var(--pastel-purple);overflow-x:auto;border:2px solid rgba(197,180,227,.2)}
+        .list-item{background:var(--bg-secondary);border-radius:16px;padding:18px 20px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;transition:all .3s;box-shadow:var(--shadow)}
+        .list-item:hover{transform:translateX(6px);box-shadow:0 8px 24px rgba(168,216,234,.25)}
+        .list-item-content{flex:1}
+        .list-item-title{font-weight:600;color:var(--text-primary);margin-bottom:4px}
+        .list-item-meta{font-size:13px;color:var(--text-muted)}
+        .list-item-actions{display:flex;gap:8px}
+        @media (max-width:980px){.page-layout{flex-direction:column}.sidebar{width:100%;padding:28px 20px}.main-content{padding:32px 20px}}
+    </style>
+</head>
+<body>
+    <div class="page-layout">
+        <aside class="sidebar">
+            <div class="logo">diebutzenscheibe.dev</div>
+            <div class="nav-section">
+                <div class="nav-section-title">Authentication</div>
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="#" class="nav-item">Auth Gateway</a>
+                <a href="#" class="nav-item">CORS Management</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Ecosystem</div>
+                <a href="#" class="nav-item">All Projects</a>
+                <a href="#" class="nav-item">Analytics</a>
+                <a href="#" class="nav-item">Settings</a>
+            </div>
+            <div class="nav-section">
+                <div class="nav-section-title">Resources</div>
+                <a href="#" class="nav-item">Documentation</a>
+                <a href="#" class="nav-item">API Reference</a>
+            </div>
+        </aside>
+        <main class="main-content">
+            <button class="theme-toggle" onclick="toggleTheme()">
+                <svg class="theme-icon theme-icon-dark" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                <svg class="theme-icon theme-icon-light" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            </button>
+            <div class="header">
+                <h1 class="page-title">Soft Pastel Design</h1>
+                <p class="subtitle">Gentle, playful, and modern - Category: Soft & Playful</p>
+            </div>
+
+            <div class="alert alert-success">
+                ✓ Custom dropdown styling applied! Rounded design with gradient accents.
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">2.4k</div>
+                    <div class="stat-label">Active Users</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">98%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">156</div>
+                    <div class="stat-label">Projects</div>
+                </div>
+            </div>
+
+            <div class="pastel-card">
+                <h2 class="card-title">User Configuration</h2>
+                <p class="card-description">Configure authentication settings and preferences with custom dropdown selectors.</p>
+                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" value="user@diebutzenscheibe.dev">
+                </div>
+                
+                <div class="form-group">
+                    <label for="role">User Role (Custom Dropdown)</label>
+                    <select id="role">
+                        <option value="">Select a role...</option>
+                        <option value="admin">Administrator</option>
+                        <option value="developer">Developer</option>
+                        <option value="user">Standard User</option>
+                        <option value="guest">Guest</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="region">Region (Custom Dropdown)</label>
+                    <select id="region">
+                        <option value="">Select your region...</option>
+                        <option value="eu">Europe</option>
+                        <option value="us">United States</option>
+                        <option value="asia">Asia Pacific</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" placeholder="Tell us about yourself...">Design enthusiast and developer.</textarea>
+                </div>
+                
+                <button class="btn btn-primary">Save Changes</button>
+                <button class="btn btn-secondary">Cancel</button>
+            </div>
+
+            <div class="pastel-card">
+                <h2 class="card-title">Active Sessions</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Session ID</th>
+                                <th>Device</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>sess_abc123</td>
+                                <td>Chrome on MacOS</td>
+                                <td>Berlin, Germany</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                            </tr>
+                            <tr>
+                                <td>sess_def456</td>
+                                <td>Firefox on Windows</td>
+                                <td>New York, USA</td>
+                                <td><span class="badge badge-warning">Idle</span></td>
+                            </tr>
+                            <tr>
+                                <td>sess_ghi789</td>
+                                <td>Safari on iOS</td>
+                                <td>Tokyo, Japan</td>
+                                <td><span class="badge badge-success">Active</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="pastel-card">
+                <h2 class="card-title">Recent Activities</h2>
+                <div class="list-item">
+                    <div class="list-item-content">
+                        <div class="list-item-title">Login from new device</div>
+                        <div class="list-item-meta">2 hours ago • Berlin, Germany</div>
+                    </div>
+                    <div class="list-item-actions">
+                        <button class="btn btn-secondary">View</button>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="list-item-content">
+                        <div class="list-item-title">Password changed</div>
+                        <div class="list-item-meta">1 day ago • Account Settings</div>
+                    </div>
+                    <div class="list-item-actions">
+                        <button class="btn btn-secondary">Details</button>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <div class="list-item-content">
+                        <div class="list-item-title">Two-factor authentication enabled</div>
+                        <div class="list-item-meta">3 days ago • Security</div>
+                    </div>
+                    <div class="list-item-actions">
+                        <button class="btn btn-secondary">Info</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pastel-card">
+                <h2 class="card-title">API Integration</h2>
+                <p class="card-description">Example authentication code with custom styling.</p>
+                <div class="code-block">const auth = await fetch('https://auth.diebutzenscheibe.dev/token', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ user, pass })
+});</div>
+            </div>
+
+            <div class="alert alert-info">
+                💡 Tip: Custom dropdowns maintain consistency with the overall design aesthetic.
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+        }
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</body>
+</html>
