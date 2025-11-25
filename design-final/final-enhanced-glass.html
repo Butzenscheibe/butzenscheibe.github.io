@@ -65,8 +65,10 @@
                 radial-gradient(circle at 15% 20%, var(--accent-glow) 0%, transparent 50%),
                 radial-gradient(circle at 85% 80%, rgba(0, 184, 148, 0.2) 0%, transparent 50%),
                 radial-gradient(circle at 50% 50%, rgba(0, 212, 170, 0.1) 0%, transparent 70%);
-            z-index: 0;
+            z-index: -1;
             animation: gradientShift 15s ease infinite;
+            pointer-events: none;
+            will-change: opacity;
         }
         
         @keyframes gradientShift {
@@ -85,7 +87,7 @@
             display: flex;
             min-height: 100vh;
             position: relative;
-            z-index: 1;
+            z-index: 0;
         }
         
         /* Glassmorphic Sidebar */
@@ -966,6 +968,8 @@
             .sidebar {
                 width: 100%;
                 padding: 28px 20px;
+                border-right: none;
+                border-bottom: 1px solid var(--glass-border);
             }
             
             .main-content {
@@ -973,7 +977,68 @@
             }
             
             .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .theme-toggle {
+                top: 16px;
+                right: 16px;
+                width: 46px;
+                height: 46px;
+            }
+            
+            .glass-card {
+                padding: 24px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .stats-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 26px;
+            }
+            
+            .subtitle {
+                font-size: 15px;
+            }
+            
+            .main-content {
+                padding: 24px 16px;
+            }
+            
+            .sidebar {
+                padding: 20px 16px;
+            }
+            
+            .glass-card {
+                padding: 20px;
+                border-radius: 16px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            
+            .logo {
+                font-size: 20px;
             }
         }
     </style>

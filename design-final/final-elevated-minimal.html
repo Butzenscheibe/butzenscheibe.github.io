@@ -844,6 +844,8 @@
                 width: 100%;
                 height: auto;
                 padding: 28px 20px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
             }
 
             .main-content {
@@ -851,7 +853,70 @@
             }
 
             .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .page-title {
+                font-size: 32px;
+            }
+            
+            .theme-toggle {
+                top: 16px;
+                right: 16px;
+                width: 46px;
+                height: 46px;
+            }
+            
+            table {
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .stats-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .page-title {
+                font-size: 26px;
+            }
+            
+            .subtitle {
+                font-size: 15px;
+            }
+            
+            .main-content {
+                padding: 24px 16px;
+            }
+            
+            .sidebar {
+                padding: 20px 16px;
+            }
+            
+            .elevated-card {
+                padding: 24px;
+                border-radius: 16px;
+            }
+            
+            .card-title {
+                font-size: 20px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            
+            .logo {
+                font-size: 20px;
+            }
+            
+            .list-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
             }
         }
     </style>
