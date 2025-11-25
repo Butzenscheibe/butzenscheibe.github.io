@@ -592,6 +592,7 @@
             
             // Format feedback
             const name = document.getElementById('userName').value;
+            const subject ='Design-Feedback';
             const feedback = `Enhanced Glassmorphism:
 Likes: ${document.getElementById('glass_likes').value || 'N/A'}
 Dislikes: ${document.getElementById('glass_dislikes').value || 'N/A'}
@@ -625,7 +626,7 @@ ${document.getElementById('general_feedback').value || 'N/A'}`;
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({ name, feedback }),
+                    body: JSON.stringify({ name, feedback, subject }),
                 });
                 
                 if (response.ok) {
