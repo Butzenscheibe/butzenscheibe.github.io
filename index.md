@@ -19,7 +19,9 @@ title: DieButzenscheibe (they/them)
     <nav class="links">
       <a href="https://auth-gateway.diebutzenscheibe.dev/demo.html" target="_blank">buAuth</a>
       <a href="https://gts.diebutzenscheibe.dev" target="_blank">gts</a>
+      <a href="https://blog.diebutzenscheibe.dev" target="_blank">writings</a>
       <a href="mailto:contact@diebutzenscheibe.dev">contact</a>
+    
     </nav>
   </main>
 
