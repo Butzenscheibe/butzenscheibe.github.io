@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Train Trip Gift - Window View Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .train-window {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(135deg, #E0E0E0 0%, #BDBDBD 100%);
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.3),
+                inset 0 2px 10px rgba(255, 255, 255, 0.5),
+                inset 0 -2px 10px rgba(0, 0, 0, 0.2);
+            animation: windowAppear 1s ease-out;
+        }
+
+        @keyframes windowAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .window-glass {
+            width: 100%;
+            height: 100%;
+            background: rgba(135, 206, 235, 0.3);
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 
+                inset 0 0 30px rgba(255, 255, 255, 0.3),
+                inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Landscape layers with parallax effect */
+        .landscape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            animation: landscapeScroll 40s linear infinite;
+        }
+
+        @keyframes landscapeScroll {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .mountains {
+            position: absolute;
+            bottom: 30%;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: 
+                linear-gradient(to bottom, transparent 0%, #7CB342 60%);
+            clip-path: polygon(
+                0% 100%, 10% 60%, 20% 70%, 30% 40%, 40% 50%, 50% 30%, 
+                60% 45%, 70% 35%, 80% 50%, 90% 40%, 100% 60%, 100% 100%
+            );
+            opacity: 0.7;
+        }
+
+        .fields {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(to bottom, #7CB342 0%, #689F38 100%);
+        }
+
+        /* Trees along the landscape */
+        .trees {
+            position: absolute;
+            bottom: 28%;
+            left: 0;
+            width: 200%;
+            height: 80px;
+            animation: landscapeScroll 40s linear infinite;
+        }
+
+        .tree {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 50px solid #558B2F;
+            animation: treePass 40s linear infinite;
+        }
+
+        .tree:nth-child(1) { left: 15%; }
+        .tree:nth-child(2) { left: 35%; }
+        .tree:nth-child(3) { left: 55%; }
+        .tree:nth-child(4) { left: 75%; }
+        .tree:nth-child(5) { left: 95%; }
+
+        /* Buildings/villages */
+        .buildings {
+            position: absolute;
+            bottom: 25%;
+            left: 0;
+            width: 200%;
+            animation: landscapeScroll 40s linear infinite;
+        }
+
+        .building {
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            height: 60px;
+            background: #8D6E63;
+        }
+
+        .building:nth-child(1) { left: 25%; height: 70px; }
+        .building:nth-child(2) { left: 27%; height: 50px; }
+        .building:nth-child(3) { left: 65%; height: 80px; }
+
+        /* Flying birds */
+        .birds {
+            position: absolute;
+            top: 15%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+        }
+
+        .bird {
+            position: absolute;
+            font-size: 20px;
+            animation: birdFly 15s linear infinite;
+            opacity: 0.6;
+        }
+
+        .bird:nth-child(1) {
+            top: 20%;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .bird:nth-child(2) {
+            top: 35%;
+            left: -50px;
+            animation-delay: 5s;
+        }
+
+        .bird:nth-child(3) {
+            top: 50%;
+            left: -50px;
+            animation-delay: 10s;
+        }
+
+        @keyframes birdFly {
+            from {
+                left: -50px;
+            }
+            to {
+                left: calc(100% + 50px);
+            }
+        }
+
+        .clouds {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            opacity: 0.4;
+        }
+
+        .cloud {
+            position: absolute;
+            background: white;
+            border-radius: 100px;
+            animation: cloudFloat 30s linear infinite;
+        }
+
+        .cloud:nth-child(1) {
+            width: 100px;
+            height: 40px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .cloud:nth-child(2) {
+            width: 80px;
+            height: 35px;
+            top: 30%;
+            left: 60%;
+            animation-delay: 5s;
+        }
+
+        .cloud:nth-child(3) {
+            width: 120px;
+            height: 45px;
+            top: 50%;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes cloudFloat {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(100vw);
+            }
+        }
+
+        /* Gift ticket on the window */
+        .ticket-on-glass {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-3deg);
+            z-index: 10;
+            animation: ticketFloat 1.5s ease-out;
+        }
+
+        @keyframes ticketFloat {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -80%) rotate(-3deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%) rotate(-3deg) scale(1);
+            }
+        }
+
+        .ticket {
+            background: rgba(255, 255, 240, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 35px 40px;
+            border-radius: 16px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(141, 110, 99, 0.2);
+            max-width: 400px;
+            position: relative;
+        }
+
+        /* Tape effect */
+        .tape {
+            position: absolute;
+            width: 80px;
+            height: 30px;
+            background: rgba(255, 248, 220, 0.6);
+            border: 1px solid rgba(139, 110, 99, 0.3);
+            transform: rotate(-45deg);
+            top: -10px;
+            right: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .ticket-content {
+            position: relative;
+        }
+
+        .ticket-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed rgba(141, 110, 99, 0.3);
+        }
+
+        .ticket-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .ticket-title {
+            font-size: 26px;
+            color: #8D6E63;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .ticket-subtitle {
+            font-size: 13px;
+            color: #7CB342;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .ticket-details {
+            margin: 20px 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px 0;
+        }
+
+        .detail-label {
+            font-size: 12px;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-value {
+            font-size: 15px;
+            color: #333;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .highlight-section {
+            background: linear-gradient(135deg, #7CB342, #689F38);
+            color: white;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 8px 20px rgba(124, 179, 66, 0.3);
+        }
+
+        .highlight-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            opacity: 0.9;
+        }
+
+        .highlight-value {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .handwritten-note {
+            font-family: 'Shadows Into Light', cursive;
+            font-size: 18px;
+            color: #8D6E63;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(141, 110, 99, 0.3);
+            line-height: 1.6;
+        }
+
+        /* Glass reflection effect */
+        .glass-reflection {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.3) 0%,
+                transparent 50%,
+                rgba(255, 255, 255, 0.1) 100%
+            );
+            pointer-events: none;
+            border-radius: 20px;
+        }
+
+        /* Condensation/fog effect */
+        .condensation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(to top, rgba(255, 255, 255, 0.2), transparent);
+            pointer-events: none;
+            border-radius: 0 0 20px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .train-window {
+                height: auto;
+                min-height: 500px;
+            }
+
+            .ticket {
+                padding: 25px 20px;
+                max-width: 320px;
+            }
+
+            .ticket-title {
+                font-size: 22px;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .detail-value {
+                text-align: left;
+            }
+
+            .landscape {
+                animation-duration: 60s;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="train-window">
+        <div class="window-glass">
+            <!-- Animated landscape -->
+            <div class="landscape">
+                <div class="mountains"></div>
+                <div class="fields"></div>
+            </div>
+
+            <div class="trees">
+                <div class="tree"></div>
+                <div class="tree"></div>
+                <div class="tree"></div>
+                <div class="tree"></div>
+                <div class="tree"></div>
+            </div>
+
+            <div class="buildings">
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+            </div>
+
+            <div class="birds">
+                <div class="bird">🦅</div>
+                <div class="bird">🦅</div>
+                <div class="bird">🦅</div>
+            </div>
+
+            <div class="clouds">
+                <div class="cloud"></div>
+                <div class="cloud"></div>
+                <div class="cloud"></div>
+            </div>
+
+            <!-- Ticket stuck to window -->
+            <div class="ticket-on-glass">
+                <div class="ticket">
+                    <div class="tape"></div>
+                    
+                    <div class="ticket-content">
+                        <div class="ticket-header">
+                            <div class="ticket-icon">🚂</div>
+                            <h1 class="ticket-title">European Rail Journey</h1>
+                            <p class="ticket-subtitle">Gift Voucher 2026</p>
+                        </div>
+
+                        <div class="ticket-details">
+                            <div class="detail-row">
+                                <span class="detail-label">For</span>
+                                <span class="detail-value">My Sister</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Trip Type</span>
+                                <span class="detail-value">Cities & Nature</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="detail-label">Valid</span>
+                                <span class="detail-value">2026</span>
+                            </div>
+                        </div>
+
+                        <div class="highlight-section">
+                            <div class="highlight-label">Your Destination</div>
+                            <div class="highlight-value">Free Choice in Europe</div>
+                        </div>
+
+                        <div class="handwritten-note">
+                            Watch the world go by<br>
+                            from a train window...<br>
+                            your adventure awaits!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Glass effects -->
+            <div class="glass-reflection"></div>
+            <div class="condensation"></div>
+        </div>
+    </div>
+</body>
+</html>
