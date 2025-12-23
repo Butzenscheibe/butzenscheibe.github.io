@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Card Design Options</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 100%);
+            color: #e0e7ff;
+            padding: 60px 24px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #88c0d0, #81a1c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #8b93b0;
+            margin-bottom: 60px;
+            font-size: 18px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .option-card {
+            background: linear-gradient(135deg, rgba(136, 192, 208, 0.08), rgba(136, 192, 208, 0.02));
+            border: 2px solid rgba(136, 192, 208, 0.3);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(136, 192, 208, 0.25);
+            border-color: rgba(136, 192, 208, 0.6);
+        }
+
+        .option-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #88c0d0, #81a1c1);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-weight: 700;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .option-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #eceff4;
+            margin-bottom: 12px;
+        }
+
+        .option-description {
+            color: #8b93b0;
+            margin-bottom: 20px;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .feature-tag {
+            background: rgba(136, 192, 208, 0.15);
+            border: 1px solid rgba(136, 192, 208, 0.3);
+            color: #88c0d0;
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .view-demo {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: rgba(136, 192, 208, 0.2);
+            border: 2px solid rgba(136, 192, 208, 0.4);
+            color: #88c0d0;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .view-demo:hover {
+            background: rgba(136, 192, 208, 0.35);
+            border-color: #88c0d0;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>European Train Trip Gift Card</h1>
+        <p class="subtitle">5 Design Options - Choose Your Favorite</p>
+
+        <div class="options-grid">
+            <div class="option-card" onclick="window.open('option1-ticket-stub.html', '_blank')">
+                <span class="option-number">Option 1</span>
+                <h2 class="option-title">Ticket Stub</h2>
+                <p class="option-description">
+                    Vintage European train ticket design with perforated edges, railway typography, and authentic stamp effects. Classic and nostalgic feel.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">Vintage Style</span>
+                    <span class="feature-tag">Railway Typography</span>
+                    <span class="feature-tag">Stamps & QR Code</span>
+                    <span class="feature-tag">Nostalgic</span>
+                </div>
+                <a href="option1-ticket-stub.html" class="view-demo" onclick="event.stopPropagation()">View Design →</a>
+            </div>
+
+            <div class="option-card" onclick="window.open('option2-journey-map.html', '_blank')">
+                <span class="option-number">Option 2</span>
+                <h2 class="option-title">Journey Map</h2>
+                <p class="option-description">
+                    Stylized European rail map with animated routes, pulsing city pins, and a floating boarding pass. Modern and interactive feel.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">Animated Map</span>
+                    <span class="feature-tag">City Pins</span>
+                    <span class="feature-tag">Rail Lines</span>
+                    <span class="feature-tag">Modern</span>
+                </div>
+                <a href="option2-journey-map.html" class="view-demo" onclick="event.stopPropagation()">View Design →</a>
+            </div>
+
+            <div class="option-card" onclick="window.open('option3-minimalist-horizon.html', '_blank')">
+                <span class="option-number">Option 3</span>
+                <h2 class="option-title">Minimalist Horizon</h2>
+                <p class="option-description">
+                    Ultra-clean Scandinavian design with geometric train silhouette crossing a horizon line. Large typography and negative space.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">Minimalist</span>
+                    <span class="feature-tag">Scandinavian</span>
+                    <span class="feature-tag">Train Animation</span>
+                    <span class="feature-tag">Clean</span>
+                </div>
+                <a href="option3-minimalist-horizon.html" class="view-demo" onclick="event.stopPropagation()">View Design →</a>
+            </div>
+
+            <div class="option-card" onclick="window.open('option4-folded-card.html', '_blank')">
+                <span class="option-number">Option 4</span>
+                <h2 class="option-title">Folded Card</h2>
+                <p class="option-description">
+                    3D greeting card with folding animation revealing gift details inside. Confetti decorations and elegant script typography.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">3D Animation</span>
+                    <span class="feature-tag">Greeting Card</span>
+                    <span class="feature-tag">Confetti</span>
+                    <span class="feature-tag">Elegant</span>
+                </div>
+                <a href="option4-folded-card.html" class="view-demo" onclick="event.stopPropagation()">View Design →</a>
+            </div>
+
+            <div class="option-card" onclick="window.open('option5-window-view.html', '_blank')">
+                <span class="option-number">Option 5</span>
+                <h2 class="option-title">Window View</h2>
+                <p class="option-description">
+                    Train window frame with scrolling landscape scenery. Gift ticket appears stuck to the glass with tape, featuring handwritten notes.
+                </p>
+                <div class="features">
+                    <span class="feature-tag">Window Frame</span>
+                    <span class="feature-tag">Scrolling Landscape</span>
+                    <span class="feature-tag">Handwritten</span>
+                    <span class="feature-tag">Immersive</span>
+                </div>
+                <a href="option5-window-view.html" class="view-demo" onclick="event.stopPropagation()">View Design →</a>
+            </div>
+        </div>
+
+        <div style="text-align: center; color: #8b93b0; font-size: 14px; margin-top: 40px;">
+            <p>All designs are fully responsive and mobile-optimized</p>
+            <p style="margin-top: 10px;">Pure HTML/CSS - No backend functionality required</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>European Train Trip Gift - Folded Card Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #2D5016 0%, #4A6B2E 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            perspective: 2000px;
+        }
+
+        .card-scene {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            height: 500px;
+            transform-style: preserve-3d;
+        }
+
+        .greeting-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            animation: cardRotate 3s ease-out;
+        }
+
+        @keyframes cardRotate {
+            0% {
+                transform: rotateY(-20deg) rotateX(10deg);
+            }
+            100% {
+                transform: rotateY(0deg) rotateX(0deg);
+            }
+        }
+
+        .card-front,
+        .card-inside-left,
+        .card-inside-right {
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+
+        .card-front {
+            right: 0;
+            background: linear-gradient(135deg, #FFFFF0 0%, #F8F8E8 100%);
+            border-radius: 0 20px 20px 0;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3),
+                        0 10px 40px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            transform-origin: left center;
+            animation: cardOpen 2s ease-out 1s forwards;
+            z-index: 2;
+        }
+
+        @keyframes cardOpen {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(-160deg);
+            }
+        }
+
+        .card-inside-left {
+            left: 0;
+            background: linear-gradient(135deg, #B76E79 0%, #A85D6B 100%);
+            border-radius: 20px 0 0 20px;
+            box-shadow: 5px 0 20px rgba(0, 0, 0, 0.2);
+            padding: 40px 30px;
+            overflow: hidden;
+        }
+
+        .card-inside-right {
+            right: 0;
+            background: linear-gradient(135deg, #FFFFF0 0%, #FAF9ED 100%);
+            border-radius: 0 20px 20px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Front of card */
+        .front-ornament {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 30px;
+            animation: ornamentAppear 1s ease-out 0.5s backwards;
+        }
+
+        @keyframes ornamentAppear {
+            from {
+                opacity: 0;
+                transform: scale(0) rotate(-180deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .front-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: #B76E79;
+            text-align: center;
+            line-height: 1.4;
+            animation: textAppear 1s ease-out 0.8s backwards;
+        }
+
+        @keyframes textAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .front-subtext {
+            font-size: 14px;
+            color: #2D5016;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: textAppear 1s ease-out 1s backwards;
+        }
+
+        /* Inside left - decorative */
+        .inside-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 255, 255, 0.3) 10px, rgba(255, 255, 255, 0.3) 20px);
+        }
+
+        .left-message {
+            position: relative;
+            z-index: 1;
+            color: #FFFFF0;
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-style: italic;
+            line-height: 1.8;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        /* Inside right - main content */
+        .gift-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .gift-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .gift-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: #2D5016;
+            margin-bottom: 10px;
+        }
+
+        .gift-subtitle {
+            font-size: 14px;
+            color: #B76E79;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .gift-details {
+            margin: 25px 0;
+        }
+
+        .detail-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(183, 110, 121, 0.05);
+            border-left: 4px solid #B76E79;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .detail-label {
+            font-size: 11px;
+            color: #B76E79;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 16px;
+            color: #2D5016;
+            font-weight: 600;
+        }
+
+        .highlight-badge {
+            background: linear-gradient(135deg, #FFD700, #FFC700);
+            color: #2D5016;
+            padding: 15px 25px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 25px 0;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .badge-text {
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .closing-message {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            font-size: 14px;
+            margin-top: 25px;
+            line-height: 1.6;
+        }
+
+        /* Confetti decoration */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #FFD700;
+            animation: confettiFall 3s ease-out infinite;
+        }
+
+        .confetti:nth-child(1) { left: 10%; animation-delay: 0s; background: #FFD700; }
+        .confetti:nth-child(2) { left: 30%; animation-delay: 0.5s; background: #B76E79; }
+        .confetti:nth-child(3) { left: 50%; animation-delay: 1s; background: #4A6B2E; }
+        .confetti:nth-child(4) { left: 70%; animation-delay: 1.5s; background: #FFD700; }
+        .confetti:nth-child(5) { left: 90%; animation-delay: 2s; background: #B76E79; }
+
+        @keyframes confettiFall {
+            0% {
+                top: -20px;
+                transform: rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                transform: rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .card-scene {
+                height: 600px;
+            }
+
+            .card-front,
+            .card-inside-left,
+            .card-inside-right {
+                width: 100%;
+                height: 50%;
+            }
+
+            .card-front {
+                top: 0;
+                right: auto;
+                border-radius: 20px 20px 0 0;
+                transform-origin: center bottom;
+            }
+
+            .card-inside-left {
+                top: 50%;
+                border-radius: 0 0 0 20px;
+            }
+
+            .card-inside-right {
+                top: 50%;
+                border-radius: 0 0 20px 0;
+            }
+
+            @keyframes cardOpen {
+                from {
+                    transform: rotateX(0deg);
+                }
+                to {
+                    transform: rotateX(160deg);
+                }
+            }
+
+            .front-text {
+                font-size: 24px;
+            }
+
+            .gift-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-scene">
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+        <div class="confetti"></div>
+
+        <div class="greeting-card">
+            <div class="card-inside-left">
+                <div class="inside-decoration"></div>
+                <div class="left-message">
+                    "Every journey begins with a single step...<br>
+                    or in this case,<br>
+                    a train ticket."
+                </div>
+            </div>
+
+            <div class="card-inside-right">
+                <div class="gift-header">
+                    <div class="gift-icon">🎁</div>
+                    <h1 class="gift-title">European Rail Adventure</h1>
+                    <p class="gift-subtitle">Gift Certificate 2026</p>
+                </div>
+
+                <div class="gift-details">
+                    <div class="detail-item">
+                        <div class="detail-label">Presented To</div>
+                        <div class="detail-value">My Wonderful Sister</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Journey Style</div>
+                        <div class="detail-value">City & Nature Exploration</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Valid Throughout</div>
+                        <div class="detail-value">2026</div>
+                    </div>
+                </div>
+
+                <div class="highlight-badge">
+                    <div class="badge-text">✨ Free Destination Choice ✨</div>
+                </div>
+
+                <p class="closing-message">
+                    Choose your own adventure across Europe.<br>
+                    The rails await your decision.
+                </p>
+            </div>
+
+            <div class="card-front">
+                <div class="front-ornament">
+                    <svg width="80" height="80" viewBox="0 0 80 80">
+                        <circle cx="40" cy="40" r="35" fill="none" stroke="#B76E79" stroke-width="2"/>
+                        <path d="M 40,15 L 40,65 M 15,40 L 65,40" stroke="#B76E79" stroke-width="2"/>
+                        <circle cx="40" cy="40" r="8" fill="#FFD700"/>
+                    </svg>
+                </div>
+                <div class="front-text">
+                    For My<br>Dear Sister
+                </div>
+                <div class="front-subtext">A Gift of Adventure</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
