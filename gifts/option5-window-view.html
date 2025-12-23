@@ -92,7 +92,7 @@
                 0% 100%, 10% 60%, 20% 70%, 30% 40%, 40% 50%, 50% 30%, 
                 60% 45%, 70% 35%, 80% 50%, 90% 40%, 100% 60%, 100% 100%
             );
-            opacity: 0.6;
+            opacity: 0.7;
         }
 
         .fields {
@@ -102,6 +102,97 @@
             width: 100%;
             height: 30%;
             background: linear-gradient(to bottom, #7CB342 0%, #689F38 100%);
+        }
+
+        /* Trees along the landscape */
+        .trees {
+            position: absolute;
+            bottom: 28%;
+            left: 0;
+            width: 200%;
+            height: 80px;
+            animation: landscapeScroll 40s linear infinite;
+        }
+
+        .tree {
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-bottom: 50px solid #558B2F;
+            animation: treePass 40s linear infinite;
+        }
+
+        .tree:nth-child(1) { left: 15%; }
+        .tree:nth-child(2) { left: 35%; }
+        .tree:nth-child(3) { left: 55%; }
+        .tree:nth-child(4) { left: 75%; }
+        .tree:nth-child(5) { left: 95%; }
+
+        /* Buildings/villages */
+        .buildings {
+            position: absolute;
+            bottom: 25%;
+            left: 0;
+            width: 200%;
+            animation: landscapeScroll 40s linear infinite;
+        }
+
+        .building {
+            position: absolute;
+            bottom: 0;
+            width: 40px;
+            height: 60px;
+            background: #8D6E63;
+        }
+
+        .building:nth-child(1) { left: 25%; height: 70px; }
+        .building:nth-child(2) { left: 27%; height: 50px; }
+        .building:nth-child(3) { left: 65%; height: 80px; }
+
+        /* Flying birds */
+        .birds {
+            position: absolute;
+            top: 15%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+        }
+
+        .bird {
+            position: absolute;
+            font-size: 20px;
+            animation: birdFly 15s linear infinite;
+            opacity: 0.6;
+        }
+
+        .bird:nth-child(1) {
+            top: 20%;
+            left: -50px;
+            animation-delay: 0s;
+        }
+
+        .bird:nth-child(2) {
+            top: 35%;
+            left: -50px;
+            animation-delay: 5s;
+        }
+
+        .bird:nth-child(3) {
+            top: 50%;
+            left: -50px;
+            animation-delay: 10s;
+        }
+
+        @keyframes birdFly {
+            from {
+                left: -50px;
+            }
+            to {
+                left: calc(100% + 50px);
+            }
         }
 
         .clouds {
@@ -354,6 +445,26 @@
             <div class="landscape">
                 <div class="mountains"></div>
                 <div class="fields"></div>
+            </div>
+
+            <div class="trees">
+                <div class="tree"></div>
+                <div class="tree"></div>
+                <div class="tree"></div>
+                <div class="tree"></div>
+                <div class="tree"></div>
+            </div>
+
+            <div class="buildings">
+                <div class="building"></div>
+                <div class="building"></div>
+                <div class="building"></div>
+            </div>
+
+            <div class="birds">
+                <div class="bird">🦅</div>
+                <div class="bird">🦅</div>
+                <div class="bird">🦅</div>
             </div>
 
             <div class="clouds">

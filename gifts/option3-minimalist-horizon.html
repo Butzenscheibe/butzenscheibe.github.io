@@ -93,11 +93,39 @@
 
         .gift-card {
             background: white;
-            border-radius: 32px;
+            border-radius: 16px;
             box-shadow: 0 40px 100px rgba(44, 62, 80, 0.15);
-            padding: 60px 50px;
+            padding: 50px 45px;
             position: relative;
             animation: cardAppear 1s ease-out;
+            border: 3px solid #2C3E50;
+        }
+
+        /* Ticket perforation effect on sides */
+        .gift-card::before,
+        .gift-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 15px;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 10px,
+                white 10px,
+                white 12px,
+                #E8F4F8 12px,
+                #E8F4F8 14px
+            );
+        }
+
+        .gift-card::before {
+            left: -8px;
+        }
+
+        .gift-card::after {
+            right: -8px;
         }
 
         @keyframes cardAppear {
@@ -113,32 +141,81 @@
 
         .card-accent {
             position: absolute;
-            top: 0;
+            top: -3px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 6px;
-            background: linear-gradient(90deg, #F4D03F, #F4D03F);
+            width: 120px;
+            height: 8px;
+            background: linear-gradient(90deg, #F4D03F, #E6C336, #F4D03F);
             border-radius: 0 0 100px 100px;
+            box-shadow: 0 4px 12px rgba(244, 208, 63, 0.4);
+        }
+
+        .ticket-corner {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #2C3E50;
+        }
+
+        .ticket-corner.top-left {
+            top: 15px;
+            left: 15px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .ticket-corner.top-right {
+            top: 15px;
+            right: 15px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .ticket-corner.bottom-left {
+            bottom: 15px;
+            left: 15px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .ticket-corner.bottom-right {
+            bottom: 15px;
+            right: 15px;
+            border-left: none;
+            border-top: none;
         }
 
         .card-title {
-            font-size: 48px;
+            font-size: 42px;
             font-weight: 800;
             color: #2C3E50;
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             letter-spacing: -1px;
+            text-transform: uppercase;
         }
 
         .card-subtitle {
-            font-size: 16px;
-            font-weight: 300;
-            color: #7f8c8d;
+            font-size: 14px;
+            font-weight: 600;
+            color: #F4D03F;
             text-align: center;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            margin-bottom: 50px;
+            letter-spacing: 3px;
+            margin-bottom: 40px;
+            padding: 8px 20px;
+            background: rgba(244, 208, 63, 0.1);
+            border-top: 2px solid #F4D03F;
+            border-bottom: 2px solid #F4D03F;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .train-icon {
+            font-size: 64px;
+            text-align: center;
+            margin: 20px 0;
         }
 
         .gift-info {
@@ -256,9 +333,14 @@
     <div class="gift-container">
         <div class="gift-card">
             <div class="card-accent"></div>
+            <div class="ticket-corner top-left"></div>
+            <div class="ticket-corner top-right"></div>
+            <div class="ticket-corner bottom-left"></div>
+            <div class="ticket-corner bottom-right"></div>
             
+            <div class="train-icon">🚂</div>
             <h1 class="card-title">European Journey</h1>
-            <p class="card-subtitle">Gift Voucher</p>
+            <p class="card-subtitle">★ Geschenkgutschein ★</p>
 
             <div class="gift-info">
                 <div class="info-block">
